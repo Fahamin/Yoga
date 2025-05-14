@@ -1,0 +1,319 @@
+package com.livetv.configurator.nexus.kodiapps.presentation.fragments
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import com.livetv.configurator.nexus.kodiapps.MainActivity
+import com.livetv.configurator.nexus.kodiapps.R
+import com.livetv.configurator.nexus.kodiapps.adapter.HomePlansAdapter
+import com.livetv.configurator.nexus.kodiapps.adapter.HomeWeekGoalAdapter
+import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Prefs
+import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
+import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
+import com.livetv.configurator.nexus.kodiapps.databinding.FragmentMyTrainingBinding
+import com.livetv.configurator.nexus.kodiapps.model.HistoryDetailsClass
+import com.livetv.configurator.nexus.kodiapps.model.HomePlanTableClass
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.DaysPlanDetailActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.DiscoverActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.ExercisesListActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.HistoryActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingExcListActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.RecentActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.SetYourWeeklyGoalActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.SubPlanActivity
+import kotlin.math.roundToInt
+
+class MyTrainingFragment : BaseFragment(), CallbackListener {
+
+    lateinit var binding: FragmentMyTrainingBinding
+    lateinit var mContext: Context
+
+   
+    
+    var homeWeekGoalAdapter: HomeWeekGoalAdapter? = null
+    var homePlansAdapter: HomePlansAdapter? = null
+    var recentPlan: HomePlanTableClass? = null
+    var lastWorkout: HistoryDetailsClass? = null
+    var onClickAd = 1
+
+     var pref: Prefs? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_training,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        pref = Prefs(requireActivity())
+        initview()
+    }
+
+    private fun initview() {
+        this.mContext = binding.root.context
+        binding.handler = ClickHandler()
+        init()
+
+    }
+
+    private fun init() {
+//        binding!!.topbar.isMenuShow = true
+//        binding!!.topbar.isDiscoverShow = true
+//        binding!!.topbar.topBarClickListener = TopClickListener()
+        binding!!.topbar.tvTitleText.text = getString(R.string.menu_training_plans)
+//        binding!!.handler = ClickHandler()
+
+        setupWeekTopData()
+
+        homePlansAdapter = HomePlansAdapter(mContext)
+        binding!!.rvPlans.layoutManager = LinearLayoutManager(mContext)
+        binding!!.rvPlans.adapter = homePlansAdapter
+        homePlansAdapter!!.setEventListener(object : HomePlansAdapter.EventListener {
+
+            override fun onItemClick(position: Int, view: View) {
+                val item = homePlansAdapter!!.getItem(position)
+                if (!item.isPro) {
+                    Log.e("TAG", "onItemClick:OnItemL:::: ${item.isPro}")
+                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
+
+                            startNextScreenMove(position)
+
+                        onClickAd = 1
+                    } else {
+                        startNextScreenMove(position)
+                        onClickAd += 1
+                    }
+                }else{
+                    startNextScreenMove(position)
+                }
+
+
+            }
+        })
+
+        homePlansAdapter!!.addAll(dbHelper!!.getHomePlanList(Constant.PlanTypeWorkout))
+
+
+    }
+
+    fun startNextScreenMove(position: Int) {
+        val item = homePlansAdapter!!.getItem(position)
+        if (item.hasSubPlan) {
+            val i = Intent(mContext, SubPlanActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(item))
+            startActivity(i)
+        } else if (item.planDays.equals("YES")) {
+            val i = Intent(mContext, DaysPlanDetailActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(item))
+            startActivity(i)
+        } else {
+            val i = Intent(mContext, ExercisesListActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(item))
+            if (item.isPro) {
+                i.putExtra(Constant.IS_PURCHASE, true)
+            } else {
+                i.putExtra(Constant.IS_PURCHASE, false)
+            }
+            startActivity(i)
+        }
+    }
+
+    private fun setupWeekTopData() {
+
+        try {
+            if (pref!!.getPref( Constant.PREF_IS_WEEK_GOAL_DAYS_SET, false)) {
+
+                binding!!.llWeekGoal.visibility = View.VISIBLE
+                binding!!.llSetGoal.visibility = View.GONE
+
+                val arrCurrentWeek = pref!!.getCurrentWeek()
+                var completedWeekDay = 0
+                for (pos in 0 until arrCurrentWeek.size) {
+                    if (dbHelper!!.isHistoryAvailable(
+                            pref!!.parseTime(
+                                arrCurrentWeek[pos],
+                                Constant.DATE_TIME_24_FORMAT,
+                                Constant.DATE_FORMAT
+                            )
+                        )
+                    ) {
+                        completedWeekDay++
+                    }
+                }
+
+                val weekDayGoal = pref!!.getPref( Constant.PREF_WEEK_GOAL_DAYS, 7)
+
+                /* binding!!.tvCompletedGoalCount.text = HtmlCompat.fromHtml(
+                "<font color='${ContextCompat.getColor(mContext, R.color.green_text)}'>$completedWeekDay</font>/$weekDayGoal",
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            )*/
+
+                binding!!.tvCompletedGoalCount.text = completedWeekDay.toString()
+                binding!!.tvTotalGoalCount.text = "/$weekDayGoal"
+
+                homeWeekGoalAdapter = HomeWeekGoalAdapter(mContext)
+                binding!!.rvWeekGoal.adapter = homeWeekGoalAdapter
+
+                homeWeekGoalAdapter!!.setEventListener(object : HomeWeekGoalAdapter.EventListener {
+                    override fun onItemClick(position: Int, view: View) {
+                        val i = Intent(mContext, HistoryActivity::class.java)
+                        startActivity(i)
+                    }
+                })
+
+            } else {
+                binding!!.llWeekGoal.visibility = View.GONE
+                binding!!.llSetGoal.visibility = View.VISIBLE
+            }
+
+            if (dbHelper!!.getHistoryList().isNullOrEmpty()) {
+                binding!!.llRecent.visibility = View.GONE
+                binding!!.llReport.visibility = View.GONE
+            } else {
+                binding!!.llRecent.visibility = View.VISIBLE
+                binding!!.llReport.visibility = View.VISIBLE
+
+                binding!!.tvWorkOuts.text = dbHelper!!.getHistoryTotalWorkout().toString()
+                binding!!.tvCalorie.text = dbHelper!!.getHistoryTotalKCal().toInt().toString()
+                binding!!.tvMinutes.text =
+                    ((dbHelper!!.getHistoryTotalMinutes() / 60).toDouble()).roundToInt().toString()
+
+                lastWorkout = dbHelper!!.getRecentHistory()
+                if (lastWorkout != null) {
+                    recentPlan = dbHelper!!.getPlanByPlanId(lastWorkout!!.PlanId.toInt())
+
+                    if (recentPlan!!.planDays == Constant.PlanDaysYes) {
+                        binding!!.tvRecentWorkOutName.text = recentPlan!!.planName
+                        val item = dbHelper!!.getDaysPlanData(lastWorkout!!.DayId)
+                        recentPlan!!.planMinutes = item!!.Minutes
+                        recentPlan!!.planWorkouts = item!!.Workouts
+                    } else {
+                        binding!!.tvRecentWorkOutName.text = lastWorkout!!.PlanName
+                    }
+
+                    binding!!.tvRecentTime.text = pref!!.parseTime(
+                        lastWorkout!!.DateTime,
+                        Constant.DATE_TIME_24_FORMAT,
+                        "HH:mm"
+                    )
+                    binding!!.imgRecentWorkout.setImageResource(
+                        pref!!.getDrawableId(
+                            recentPlan!!.planThumbnail,
+                            mContext
+                        )
+                    )
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onResume() {
+        openInternetDialog(this)
+        super.onResume()
+        setupWeekTopData()
+        homePlansAdapter?.notifyDataSetChanged()
+        Log.e("TAG", "MainActivity:::::::::onResume:::Main Activity:::::: ")
+    }
+
+
+    inner class TopClickListener : TopBarClickListener {
+        override fun onTopBarClickListener(view: View?, value: String?) {
+            pref!!.hideKeyBoard(requireActivity(), view!!)
+
+            if (value.equals(getString(R.string.menu_discover))) {
+                val i = Intent(mContext, DiscoverActivity::class.java)
+                startActivity(i)
+            }
+
+        }
+    }
+
+    inner class ClickHandler {
+
+        fun onSetGoalClick() {
+            val i = Intent(mContext, SetYourWeeklyGoalActivity::class.java)
+            startActivityForResult(i, 8019)
+        }
+
+        fun onEditWeekGoalClick() {
+            val i = Intent(mContext, SetYourWeeklyGoalActivity::class.java)
+            startActivity(i)
+        }
+
+        fun onBackToTopClick() {
+            binding!!.nestedScrollView.isSmoothScrollingEnabled = true
+            binding!!.nestedScrollView.fullScroll(View.FOCUS_UP)
+        }
+
+        fun onMyTrainingClick() {
+//            val i = Intent(mContext, MyTrainingActivity::class.java)
+            val i = Intent(mContext, MainActivity::class.java)
+            i.putExtra(Constant.FROMMYTRAININGFRAGMENT,2)
+            startActivity(i)
+        }
+
+        fun onRecentViewAllClick() {
+            val i = Intent(mContext, RecentActivity::class.java)
+            startActivity(i)
+        }
+
+        fun onRecentViewClick() {
+
+            if (recentPlan!!.planType.equals(Constant.PlanTypeMyTraining)) {
+                val i = Intent(mContext, MyTrainingExcListActivity::class.java)
+                i.putExtra("workoutPlanData", Gson().toJson(recentPlan))
+                startActivity(i)
+            } else if (recentPlan!!.hasSubPlan) {
+                val i = Intent(mContext, SubPlanActivity::class.java)
+                i.putExtra("workoutPlanData", Gson().toJson(recentPlan))
+                startActivity(i)
+            } else if (recentPlan!!.planDays.equals("YES")) {
+                val i = Intent(mContext, DaysPlanDetailActivity::class.java)
+                i.putExtra("workoutPlanData", Gson().toJson(recentPlan))
+                startActivity(i)
+            } else {
+                val i = Intent(mContext, ExercisesListActivity::class.java)
+                i.putExtra("workoutPlanData", Gson().toJson(recentPlan))
+                i.putExtra(Constant.IS_PURCHASE, false)
+                startActivity(i)
+            }
+
+            /*val i = Intent(mContext, ExercisesListActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(recentPlan))
+            i.putExtra(Constant.extra_day_id, lastWorkout!!.DayId)
+            i.putExtra("day_name", lastWorkout!!.DayName)
+            startActivity(i)*/
+        }
+    }
+
+
+
+    override fun onSuccess() {
+
+    }
+
+    override fun onCancel() {
+
+    }
+
+    override fun onRetry() {
+
+    }
+
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:paddingStart="@dimen/_15sdp"
+    android:paddingTop="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp"
+    android:paddingBottom="@dimen/_15sdp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/weight"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:maxLength="22"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvKG"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/btn_kg_lb_selector_radius_5"
+            android:gravity="center"
+            android:text="@string/kg"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvLB"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/btn_kg_lb_selector_radius_5"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/lb"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:text="@string/height"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editHeightCM"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:maxLength="22"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/llInch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/editHeightFT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:maxLength="22"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editHeightIn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:maxLength="22"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCM"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/btn_kg_lb_selector_radius_5"
+            android:gravity="center"
+            android:text="@string/cm"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvIN"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/btn_kg_lb_selector_radius_5"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/in"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

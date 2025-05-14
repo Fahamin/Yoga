@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="today_border">#e4e4e4</color>
+    <color name="today_background">#85f7f7f7</color>
+    <color name="secundaryTextColor">#757575</color>
+    <color name="primaryTextColor">#4d4d4d</color>
+    <color name="colorHover">#30818181</color>
+    <color name="futureColor">#E9E9E9</color>
+    <color name="selectedTextColor">#000</color>
+
+    <color name="colorAccent">#2c2c2e</color>
+    <color name="colorPrimary">#0c0c0e</color>
+    <color name="colorPrimaryDark">#0c0c0e</color>
+    <color name="colorSettingbg">#1c1c1e</color>
+    <color name="theme">#0d55ff</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="bg_common_blue">#0C0C0E</color>
+    <color name="black">#000000</color>
+    <color name="number_picker_selected_text_color">#1a263a</color>
+    <color name="number_picker_text_color">#A6A6A6</color>
+    <!--    <color name="number_picker_divider_color">#ed37dd</color>-->
+    <color name="number_picker_divider_color">#0c0c0e</color>
+    <color name="view_line">#333333</color>
+
+    <color name="primary">#0c0c0e</color>
+    <color name="primaryDark">#0c0c0e</color>
+    <color name="accent">#2c2c2e</color>
+
+    <color name="bottom_bar_color">#2c2c2e</color>
+    <color name="gray_light_">#999999</color>0C0C0E
+    <color name="gray_light_____">#f4f4f4</color>
+    <color name="gray_light__">#eeeeee</color>
+    <color name="gray_light____">#d3d1d2</color>
+    <color name="black_66">#66000000</color>
+    <color name="box_select">#0D49D4</color>
+
+    <color name="select_transparancy">#e2e2e2</color>
+
+    <color name="col_666">#666666</color>
+    <color name="col_999">#999999</color>
+
+
+    <color name="whats_your_goal_card_bg_color">#F0F3F5</color>
+
+    <!--    <color name="green_gradual_end_color">#ed37dd</color>-->
+    <color name="green_gradual_end_color">#0c0c0e</color>
+    <!--    <color name="green_gradual_start_color">#ca53f5</color>-->
+    <color name="green_gradual_start_color">#0c0c0e</color>
+
+    <!--    <color name="green_text">#ed37dd</color>-->
+    <color name="green_text">#0c0c0e</color>
+    <!--    <color name="beginner_bg_color">#ed37dd</color>-->
+    <color name="gray_text">#80ffffff</color>
+    <color name="side_menu_text_color">#5a5d65</color>
+    <color name="side_menu_selected_bg_color">#EEEDEF</color>
+
+    <!-- Todo BMI Chart Background -->
+    <color name="colorFirst">#91CEC0</color>
+    <color name="colorSecond">#154C83</color>
+    <color name="colorThird">#1DC974</color>
+    <color name="colorFour">#CCC504</color>
+    <color name="colorFive">#E09C55</color>
+    <color name="colorSix">#CF2E2E</color>
+    <color name="default_icon">#969697</color>
+
+    <color name="setting_color_blue">#0d55ff</color>
+    <color name="setting_color_orange">#e2791c</color>
+    <color name="setting_color_red">#aa3131</color>
+    <color name="setting_color_green">#1b7b85</color>
+
+</resources>
