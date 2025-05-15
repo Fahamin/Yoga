@@ -18,6 +18,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Yoga">
         <activity
+            android:name=".presentation.activity.MyTrainingActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
+        <activity
+            android:name=".presentation.activity.NewTrainingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.AddExerciseDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ExerciseVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.AddExerciseActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.activity.MyTrainingExcListActivity"
             android:exported="false" />
         <activity

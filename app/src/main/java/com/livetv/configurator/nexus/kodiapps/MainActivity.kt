@@ -1,10 +1,8 @@
 package com.livetv.configurator.nexus.kodiapps
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.livetv.configurator.nexus.kodiapps.adapter.ViewPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.databinding.ActivityMainBinding
@@ -14,13 +12,11 @@ import com.livetv.configurator.nexus.kodiapps.presentation.fragments.ReportsFrag
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.SettingFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.TrainingAddFragment
 
-
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var vPagerAdapter: ViewPagerAdapter
     private var selectedPage = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,38 +26,50 @@ class MainActivity : AppCompatActivity() {
         setupViewPager()
 
         binding.vPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-
             override fun onPageScrollStateChanged(state: Int) {}
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
-                binding.vPager.currentItem = position
-                binding.bottomBarNav.show(position + 1, true)
+                binding.bottomBarNav.selectedItemId = when(position) {
+                    0 -> R.id.menu_my_training
+                    1 -> R.id.menu_discover
+                    2 -> R.id.menu_add
+                    3 -> R.id.menu_report
+                    else -> R.id.menu_setting
+                }
             }
         })
-        initBottomBarNavigationMain(binding.bottomBarNav)
+
+        binding.bottomBarNav.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.menu_my_training -> binding.vPager.currentItem = 0
+                R.id.menu_discover -> binding.vPager.currentItem = 1
+                R.id.menu_add -> binding.vPager.currentItem = 2
+                R.id.menu_report -> binding.vPager.currentItem = 3
+                R.id.menu_setting -> binding.vPager.currentItem = 4
+            }
+            true
+        }
+
         initParam()
     }
 
     fun initParam() {
         try {
-            if (intent.extras != null) {
-                if (intent.extras!!.containsKey(Constant.FROMMYTRAININGFRAGMENT)) {
-                    selectedPage = intent.getIntExtra(Constant.FROMMYTRAININGFRAGMENT, 0)
-                    binding.vPager.currentItem = selectedPage
-                    binding.bottomBarNav.show(selectedPage + 1, true)
+            if (intent.extras != null && intent.extras!!.containsKey(Constant.FROMMYTRAININGFRAGMENT)) {
+                selectedPage = intent.getIntExtra(Constant.FROMMYTRAININGFRAGMENT, 0)
+                binding.vPager.currentItem = selectedPage
+                binding.bottomBarNav.selectedItemId = when(selectedPage) {
+                    0 -> R.id.menu_my_training
+                    1 -> R.id.menu_discover
+                    2 -> R.id.menu_add
+                    3 -> R.id.menu_report
+                    else -> R.id.menu_setting
                 }
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     private fun setupViewPager() {
@@ -75,49 +83,5 @@ class MainActivity : AppCompatActivity() {
         binding.vPager.adapter = vPagerAdapter
         binding.vPager.offscreenPageLimit = vPagerAdapter.count
         binding.vPager.currentItem = selectedPage
-
     }
-
-    private fun initBottomBarNavigationMain(bottomBarNavigationBinding: MeowBottomNavigation) {
-        bottomBarNavigationBinding.add(
-            MeowBottomNavigation.Model(
-                1,
-                R.drawable.ic_menu_training_plan
-            )
-        )
-        bottomBarNavigationBinding.add(
-            MeowBottomNavigation.Model(
-                2,
-                R.drawable.ic_menu_library
-            )
-        )
-        bottomBarNavigationBinding.add(
-            MeowBottomNavigation.Model(
-                3,
-                R.drawable.ic_baseline_add_24
-            )
-        )
-        bottomBarNavigationBinding.add(
-            MeowBottomNavigation.Model(
-                4,
-                R.drawable.ic_menu_report
-            )
-        )
-        bottomBarNavigationBinding.add(
-            MeowBottomNavigation.Model(
-                5,
-                R.drawable.ic_menu_setting
-            )
-        )
-        bottomBarNavigationBinding.show(1, true)
-        bottomBarNavigationBinding.setOnClickMenuListener {
-            Log.e("TAG", "initBottomBarNavigation:::: ${it.id}")
-            binding.vPager.currentItem = it.id - 1
-
-        }
-
-
-
-    }
-
 }

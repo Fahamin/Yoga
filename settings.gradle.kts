@@ -21,7 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Yoga"
 include(":app")
-include (":meowbottomnavigation")
 include (":mpchart")
 include (":horixontalpic")
 include (":numberpik")

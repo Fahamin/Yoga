@@ -59,7 +59,10 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
-
+    implementation(libs.play.services.ads)
+    implementation(libs.audience.network.sdk)
+    implementation(libs.joda.time)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core)
@@ -69,6 +72,5 @@ dependencies {
     implementation(project(":numberpik"))
     implementation(project(":exre"))
 
-    implementation(project(":meowbottomnavigation"))
 
 }

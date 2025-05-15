@@ -1,5 +1,6 @@
 package com.livetv.configurator.nexus.kodiapps.presentation.fragments
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
@@ -14,12 +16,16 @@ import com.livetv.configurator.nexus.kodiapps.adapter.DurationAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PainReliefPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PostureCorrectionAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.TrainingGoalAdapter
+import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Prefs
+import com.livetv.configurator.nexus.kodiapps.core.interfaces.AdsCallback
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.databinding.FragmentDiscoverBinding
 import com.livetv.configurator.nexus.kodiapps.model.HomePlanTableClass
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.DiscoverDetailActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.ExercisesListActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingActivity
 import java.util.Date
 
 class DiscoverFragment : BaseFragment() , CallbackListener {
@@ -35,6 +41,7 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
     var onClickAd = 1
     lateinit var mContext: Context
     var randomPlan: HomePlanTableClass? = null
+    lateinit var pref: Prefs
 
 
     override fun onCreateView(
@@ -42,12 +49,13 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDiscoverBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        pref = Prefs(requireContext())
         initView()
     }
 
@@ -57,6 +65,7 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
     private fun init() {
         this.mContext = binding.root.context
+        binding.handler = ClickHandler()
         binding.topbar.tvTitleText.text = getString(R.string.menu_discover)
         painReliefPagerAdapter = PainReliefPagerAdapter(mContext, 2)
         binding.painReliefViewPager.offscreenPageLimit = painReliefPagerAdapter!!.count
@@ -73,9 +82,21 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
                 val item = painReliefPagerAdapter!!.getItem(position)
                 if (!item.isPro) {
                     if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-
+                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
+                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenpainRelief(position)
+                                }
+                            })
+                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
+                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenpainRelief(position)
+                                }
+                            })
+                        } else {
                             startNextScreenpainRelief(position)
-
+                        }
                         onClickAd = 1
                     } else {
                         startNextScreenpainRelief(position)
@@ -104,9 +125,21 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
                 val item = flexibilityViewPagerAdapter!!.getItem(position)
                 if (!item.isPro) {
                     if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-
+                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
+                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenflexibility(position)
+                                }
+                            })
+                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
+                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenflexibility(position)
+                                }
+                            })
+                        } else {
                             startNextScreenflexibility(position)
-
+                        }
                         onClickAd = 1
                     } else {
                         startNextScreenflexibility(position)
@@ -136,9 +169,21 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
                 if (!item.isPro) {
                     if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-
+                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
+                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreembeginner(position)
+                                }
+                            })
+                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
+                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreembeginner(position)
+                                }
+                            })
+                        } else {
                             startNextScreembeginner(position)
-
+                        }
                         onClickAd = 1
                     } else {
                         startNextScreembeginner(position)
@@ -169,9 +214,21 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
                 if (!item.isPro) {
 
                     if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-
+                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
+                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenfatBurning(position)
+                                }
+                            })
+                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
+                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
+                                override fun startNextScreenAfterAd() {
+                                    startNextScreenfatBurning(position)
+                                }
+                            })
+                        } else {
                             startNextScreenfatBurning(position)
-
+                        }
                         onClickAd = 1
                     } else {
                         startNextScreenfatBurning(position)
@@ -313,10 +370,10 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
             getBodyFocusData()
             getDurationData()
 
-            val lastDate = utils.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
-            val currDate = utils.parseTime(Date(), "dd-MM-yyyy")
-            val currDateStr = utils.parseTime(currDate.time, "dd-MM-yyyy")
-            val str = utils.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN, "")
+            val lastDate = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
+            val currDate = pref!!.parseTime(Date(), "dd-MM-yyyy")
+            val currDateStr = pref!!.parseTime(currDate.time, "dd-MM-yyyy")
+            val str = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN, "")
             if (lastDate.isNullOrEmpty()
                     .not() && currDateStr.equals(lastDate) && str.isNullOrEmpty().not()
             ) {
@@ -325,10 +382,10 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
             } else {
                 randomPlan = dbHelper!!.getRandomDiscoverPlan()
-                utils.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
-                utils.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN, Gson().toJson(randomPlan))
+                pref!!.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
+                pref!!.setPref(Constant.PREF_RANDOM_DISCOVER_PLAN, Gson().toJson(randomPlan))
             }
-            binding!!.imgCover.setImageResource(utils.getDrawableId(randomPlan!!.planImage, mContext))
+            binding!!.imgCover.setImageResource(pref!!.getDrawableId(randomPlan!!.planImage, mContext))
             binding!!.tvTitle.text = randomPlan!!.planName
             if (randomPlan!!.shortDes.isNullOrEmpty().not())
                 binding!!.tvDesc.text = randomPlan!!.shortDes
@@ -394,7 +451,22 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
     }
 
 
+    inner class ClickHandler {
 
+        fun onMyTrainingClick() {
+            val i = Intent(mContext, MyTrainingActivity::class.java)
+            startActivity(i)
+            (mContext as Activity).finish()
+        }
+
+        fun onTopPlanClick() {
+
+            val i = Intent(mContext, ExercisesListActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(randomPlan))
+            startActivity(i)
+        }
+
+    }
 
 
 

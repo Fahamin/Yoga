@@ -1,60 +1,179 @@
 package com.livetv.configurator.nexus.kodiapps.presentation.fragments
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.livetv.configurator.nexus.kodiapps.R
+import com.livetv.configurator.nexus.kodiapps.adapter.MyTrainingAdapter
+import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
+import com.livetv.configurator.nexus.kodiapps.databinding.FragmentTrainingAddBinding
+import com.livetv.configurator.nexus.kodiapps.model.HomePlanTableClass
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.AddExerciseActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingExcListActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class TrainingAddFragment : BaseFragment() , CallbackListener {
+    lateinit var binding: FragmentTrainingAddBinding
+    lateinit var mContext: Context
+    var myTrainingAdapter: MyTrainingAdapter? = null
 
-/**
- * A simple [Fragment] subclass.
- * Use the [TrainingAddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class TrainingAddFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_training_add,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+    }
+
+    private fun init() {
+        this.mContext = binding.root.context
+        binding!!.handler = ClickHandler()
+        binding!!.topbar.tvTitleText.text = getString(R.string.menu_my_training)
+
+        myTrainingAdapter = MyTrainingAdapter(mContext)
+        binding!!.rvMyTraining.layoutManager = LinearLayoutManager(mContext)
+        binding!!.rvMyTraining.setAdapter(myTrainingAdapter)
+
+        myTrainingAdapter!!.setEventListener(object : MyTrainingAdapter.EventListener {
+            override fun onItemClick(position: Int, view: View) {
+                val item = myTrainingAdapter!!.getItem(position)
+                val i = Intent(mContext, MyTrainingExcListActivity::class.java)
+                i.putExtra("workoutPlanData", Gson().toJson(item))
+                startActivity(i)
+
+            }
+
+            override fun onMoreClick(position: Int, view: View) {
+                val item = myTrainingAdapter!!.getItem(position)
+                showPopupMenu(view, item)
+            }
+
+        })
+
+        fillData()
+    }
+
+    @SuppressLint("RestrictedApi")
+    fun fillData() {
+        myTrainingAdapter!!.addAll(dbHelper!!.getHomePlanList(Constant.PlanTypeMyTraining))
+
+        if (myTrainingAdapter!!.itemCount > 0) {
+            binding.llPlaceHolder.visibility = View.GONE
+            binding.imgAddNew.visibility = View.VISIBLE
+        } else {
+            binding.llPlaceHolder.visibility = View.VISIBLE
+            binding.imgAddNew.visibility = View.GONE
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_training_add, container, false)
+    private fun showPopupMenu(
+        view: View,
+        planDetail: HomePlanTableClass
+    ) {
+        val menu = PopupMenu(mContext, view)
+
+        menu.menu.add(getString(R.string.rename))
+        val s = SpannableString(getString(R.string.delete))
+        s.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(mContext, R.color.setting_color_red)),
+            0,
+            s.length,
+            0
+        )
+        menu.menu.add(s)
+
+        menu.setOnMenuItemClickListener { item ->
+            if (item!!.title is SpannableString) {
+                showDeleteConfirmationDialog(planDetail)
+            } else {
+                showTrainingPlanNameDialog(planDetail)
+            }
+            true
+        }
+
+        menu.show()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment TrainingAddFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            TrainingAddFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onResume() {
+        openInternetDialog(this)
+        super.onResume()
+        fillData()
+    }
+
+    private fun showDeleteConfirmationDialog(planDetail: HomePlanTableClass) {
+        val builder = AlertDialog.Builder(requireActivity(), R.style.MyAlertDialogStyle)
+        builder.setCancelable(false)
+        builder.setMessage(getString(R.string.delete_confirmation_msg))
+        builder.setPositiveButton(R.string.delete) { _, _ ->
+            dbHelper!!.deleteMyTrainingPlan(planDetail.planId!!)
+            fillData()
+        }
+        builder.setNegativeButton(R.string.btn_cancel) { dialog, _ -> dialog.dismiss() }
+        builder.create().show()
+    }
+
+    private fun showTrainingPlanNameDialog(item: HomePlanTableClass) {
+        val builder = AlertDialog.Builder(requireActivity(), R.style.MyAlertDialogStyle)
+        builder.setCancelable(false)
+        builder.setTitle(R.string.please_name_your_plan)
+
+        val dialogLayout = layoutInflater.inflate(R.layout.dialog_edit_text, null)
+        val editText = dialogLayout.findViewById<EditText>(R.id.editText)
+
+        editText.setText(item!!.planName)
+
+        builder.setView(dialogLayout)
+
+        builder.setPositiveButton(R.string.btn_ok) { dialog, which ->
+            dbHelper!!.updateMyTrainingPlanName(item.planId!!, editText.text.toString())
+            fillData()
+            dialog.dismiss()
+        }
+        builder.setNegativeButton(R.string.btn_cancel, { dialog, which -> dialog.dismiss() })
+        builder.create().show()
+    }
+
+    inner class ClickHandler {
+
+        fun onAddNewClick() {
+            val i = Intent(requireContext(), AddExerciseActivity::class.java)
+            i.putExtra("from_new_training", false)
+            startActivity(i)
+        }
+
+
+    }
+
+
+    override fun onSuccess() {
+
+    }
+
+    override fun onCancel() {
+
+    }
+
+    override fun onRetry() {
+
     }
 }

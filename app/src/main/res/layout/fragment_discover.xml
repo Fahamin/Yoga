@@ -1,287 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="handler"
+            type="com.livetv.configurator.nexus.kodiapps.presentation.fragments.DiscoverFragment.ClickHandler" />
+
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <include
-            android:id="@+id/topbar"
-            layout="@layout/topbar" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/primaryDark" />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:orientation="vertical"
-            android:paddingTop="@dimen/_15sdp"
-            android:paddingBottom="@dimen/dp70">
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:onClick="@{(v)->handler.onTopPlanClick()}"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="3dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true">
-
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <ImageView
-                        android:id="@+id/imgCover"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_130sdp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/cover_morning" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginStart="@dimen/_15sdp"
-                        android:layout_marginEnd="@dimen/_30sdp"
-                        android:layout_marginBottom="@dimen/_15sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tvTitle"
-                            style="@style/txt_fff_20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/_2_min_lower_back_stretching" />
-
-                        <TextView
-                            android:id="@+id/tvDesc"
-                            style="@style/txt_fff_16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:ellipsize="end"
-                            android:maxLines="2"
-                            android:text="@string/dummy_text" />
-
-                    </LinearLayout>
-
-                </FrameLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/pain_relief" />
-
-            <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
-                android:id="@+id/painReliefViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/training_goal" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTrainingGoal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_5sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_training_goal" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/flexibility" />
-
-            <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
-                android:id="@+id/flexibilityViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/body_focus" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBodyFocus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_training_goal" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/more"
-                android:visibility="gone" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvMyTraining"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:visibility="gone"
-                app:cardBackgroundColor="@color/whats_your_goal_card_bg_color"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="3dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/cover_my_training" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingStart="@dimen/_15sdp"
-                        android:paddingEnd="@dimen/_15sdp">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_add_my_training_white" />
-
-                        <TextView
-                            style="@style/txt_fff_18"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:text="@string/menu_my_training"
-                            android:textAllCaps="true" />
-
-                    </LinearLayout>
-
-                </FrameLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/for_beginners" />
-
-            <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
-                android:id="@+id/forBeginnerViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/posture_correction" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPostureCorrection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_training_goal" />
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/fat_burning" />
-
-            <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
-                android:id="@+id/fatBurningViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top" />
-
-
-            <TextView
-                style="@style/txt_fff_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:paddingStart="@dimen/_15sdp"
-                android:text="@string/duration" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_duration" />
+            <include
+                android:id="@+id/topbar"
+                layout="@layout/topbar" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primaryDark" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/_15sdp"
+                android:paddingBottom="@dimen/dp70">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:onClick="@{(v)->handler.onTopPlanClick()}"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="3dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
 
 
-</LinearLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
+
+                        <ImageView
+                            android:id="@+id/imgCover"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_130sdp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/cover_morning" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:layout_marginBottom="@dimen/_15sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTitle"
+                                style="@style/txt_fff_20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_2_min_lower_back_stretching" />
+
+                            <TextView
+                                android:id="@+id/tvDesc"
+                                style="@style/txt_fff_16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:text="@string/dummy_text" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/pain_relief" />
+
+                <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
+
+                    android:id="@+id/painReliefViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/training_goal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTrainingGoal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_5sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_training_goal" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/flexibility" />
+
+                <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
+
+                    android:id="@+id/flexibilityViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/body_focus" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBodyFocus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_training_goal" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/more"
+                    android:visibility="gone" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMyTraining"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:onClick="@{(v)->handler.onMyTrainingClick()}"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/whats_your_goal_card_bg_color"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="3dp"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/cover_my_training" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingEnd="@dimen/_15sdp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_add_my_training_white" />
+
+                            <TextView
+                                style="@style/txt_fff_18"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:text="@string/menu_my_training"
+                                android:textAllCaps="true" />
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/for_beginners" />
+
+                <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
+
+                    android:id="@+id/forBeginnerViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/posture_correction" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPostureCorrection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_training_goal" />
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/fat_burning" />
+
+                <com.livetv.configurator.nexus.kodiapps.core.HeightWrappingViewPager
+                    android:id="@+id/fatBurningViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top" />
+
+
+                <TextView
+                    style="@style/txt_fff_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:text="@string/duration" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_duration" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+</layout>
