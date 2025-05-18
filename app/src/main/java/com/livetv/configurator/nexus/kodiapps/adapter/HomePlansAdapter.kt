@@ -29,6 +29,7 @@ class HomePlansAdapter(internal var context: Context) :
         //        this.data.addAll(data);
         utils = Prefs(context)
     }
+
     fun getItem(pos: Int): HomePlanTableClass {
         return data[pos]
     }
@@ -74,6 +75,7 @@ class HomePlansAdapter(internal var context: Context) :
                     )
                 viewHolder = TitleHolder(itemHomeParentBinding)
             }
+
             VIEW_DESC -> {
                 val itemHomeChildBinding: ItemHomeChildBinding =
                     DataBindingUtil.inflate<ItemHomeChildBinding>(
@@ -82,6 +84,7 @@ class HomePlansAdapter(internal var context: Context) :
                     )
                 viewHolder = ChildHolder(itemHomeChildBinding)
             }
+
             else -> {
             }
         }
@@ -100,12 +103,13 @@ class HomePlansAdapter(internal var context: Context) :
 
                     holder.itemHomeParentBinding.tvName.text = item.planName
                 }
+
                 VIEW_DESC -> {
                     val holder = viewHolder as ChildHolder
 
                     holder.itemHomeChildBinding.tvTitle.text = item.planName
                     holder.itemHomeChildBinding.imgCover.setImageResource(
-                        utils!!.getDrawableId(item.planImage,context)
+                        utils!!.getDrawableId(item.planImage, context)
                     )
 
                     if ((item.planMinutes!!.toInt() > 0 || item.planWorkouts!!.toInt() > 0) && item.planText.isNullOrEmpty() && item.planTestDes.isNullOrEmpty()) {
@@ -127,22 +131,26 @@ class HomePlansAdapter(internal var context: Context) :
                         holder.itemHomeChildBinding.tvDes.visibility = View.GONE
                     }
 
-                    if (item.isPro) {
-                        holder.itemHomeChildBinding.imgPro.visibility = View.VISIBLE
-                    } else {
-                        holder.itemHomeChildBinding.imgPro.visibility = View.GONE
-                    }
 
-                    if (item.planDays.equals("YES")){
+                    holder.itemHomeChildBinding.imgPro.visibility = View.GONE
+
+
+                    if (item.planDays.equals("YES")) {
                         val days = DataHelper(context).getCompleteDayCountByPlanId(item.planId!!)
-                        if(days > 0) {
+                        if (days > 0) {
                             holder.itemHomeChildBinding.tvGo.visibility = View.GONE
                             holder.itemHomeChildBinding.llDayProgress.visibility = View.VISIBLE
-                            utils!!.setDayProgressData(context, item.planId!!, holder.itemHomeChildBinding.tvDayLeft, holder.itemHomeChildBinding.tvPer, holder.itemHomeChildBinding.pbDay)
-                        }else{
+                            utils!!.setDayProgressData(
+                                context,
+                                item.planId!!,
+                                holder.itemHomeChildBinding.tvDayLeft,
+                                holder.itemHomeChildBinding.tvPer,
+                                holder.itemHomeChildBinding.pbDay
+                            )
+                        } else {
                             holder.itemHomeChildBinding.llDayProgress.visibility = View.GONE
                         }
-                    }else {
+                    } else {
                         holder.itemHomeChildBinding.llDayProgress.visibility = View.GONE
                     }
 
@@ -153,6 +161,7 @@ class HomePlansAdapter(internal var context: Context) :
                     }
 
                 }
+
                 else -> {
                 }
             }

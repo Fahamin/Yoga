@@ -1379,7 +1379,7 @@ class Prefs(context: Context) {
             val sendIntentGmail = Intent(Intent.ACTION_SEND)
             sendIntentGmail.type = "plain/text"
             sendIntentGmail.setPackage("com.google.android.gm")
-            sendIntentGmail.putExtra(Intent.EXTRA_EMAIL, arrayOf("developerjd60@gmail.com"))
+            sendIntentGmail.putExtra(Intent.EXTRA_EMAIL, arrayOf("ayeshahum42@gmail.com"))
             sendIntentGmail.putExtra(
                 Intent.EXTRA_SUBJECT,
                 content.resources.getString(R.string.app_name) + " - Android"
@@ -1390,7 +1390,7 @@ class Prefs(context: Context) {
             sendIntentIfGmailFail.type = "*/*"
             sendIntentIfGmailFail.putExtra(
                 Intent.EXTRA_EMAIL,
-                arrayOf("developerjd60@gmail.com")
+                arrayOf("ayeshahum42@gmail.com")
             )
             sendIntentIfGmailFail.putExtra(
                 Intent.EXTRA_SUBJECT,

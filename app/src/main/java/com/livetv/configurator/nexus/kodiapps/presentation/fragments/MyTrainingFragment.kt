@@ -39,20 +39,19 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
     lateinit var mContext: Context
 
 
-
     var homeWeekGoalAdapter: HomeWeekGoalAdapter? = null
     var homePlansAdapter: HomePlansAdapter? = null
     var recentPlan: HomePlanTableClass? = null
     var lastWorkout: HistoryDetailsClass? = null
     var onClickAd = 1
-     var pref: Prefs? = null
+    var pref: Prefs? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_my_training,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_training, container, false)
         return binding.root
     }
 
@@ -69,6 +68,7 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
         init()
 
     }
+
     private fun init() {
 //        binding!!.topbar.isMenuShow = true
 //        binding!!.topbar.isDiscoverShow = true
@@ -108,7 +108,7 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
                         startNextScreenMove(position)
                         onClickAd += 1
                     }
-                }else{
+                } else {
                     startNextScreenMove(position)
                 }
 
@@ -146,10 +146,8 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
     private fun setupWeekTopData() {
 
         try {
-            if (pref!!.getPref( Constant.PREF_IS_WEEK_GOAL_DAYS_SET, false)) {
+            if (pref!!.getPref(Constant.PREF_IS_WEEK_GOAL_DAYS_SET, false)) {
 
-                binding!!.llWeekGoal.visibility = View.VISIBLE
-                binding!!.llSetGoal.visibility = View.GONE
 
                 val arrCurrentWeek = pref!!.getCurrentWeek()
                 var completedWeekDay = 0
@@ -166,18 +164,10 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
                     }
                 }
 
-                val weekDayGoal = pref!!.getPref( Constant.PREF_WEEK_GOAL_DAYS, 7)
-
-                /* binding!!.tvCompletedGoalCount.text = HtmlCompat.fromHtml(
-                "<font color='${ContextCompat.getColor(mContext, R.color.green_text)}'>$completedWeekDay</font>/$weekDayGoal",
-                HtmlCompat.FROM_HTML_MODE_LEGACY
-            )*/
-
-                binding!!.tvCompletedGoalCount.text = completedWeekDay.toString()
-                binding!!.tvTotalGoalCount.text = "/$weekDayGoal"
+                val weekDayGoal = pref!!.getPref(Constant.PREF_WEEK_GOAL_DAYS, 7)
 
                 homeWeekGoalAdapter = HomeWeekGoalAdapter(mContext)
-                binding!!.rvWeekGoal.adapter = homeWeekGoalAdapter
+
 
                 homeWeekGoalAdapter!!.setEventListener(object : HomeWeekGoalAdapter.EventListener {
                     override fun onItemClick(position: Int, view: View) {
@@ -186,48 +176,23 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
                     }
                 })
 
-            } else {
-                binding!!.llWeekGoal.visibility = View.GONE
-                binding!!.llSetGoal.visibility = View.VISIBLE
             }
 
-            if (dbHelper!!.getHistoryList().isNullOrEmpty()) {
-                binding!!.llRecent.visibility = View.GONE
-                binding!!.llReport.visibility = View.GONE
-            } else {
-                binding!!.llRecent.visibility = View.VISIBLE
-                binding!!.llReport.visibility = View.VISIBLE
 
-                binding!!.tvWorkOuts.text = dbHelper!!.getHistoryTotalWorkout().toString()
-                binding!!.tvCalorie.text = dbHelper!!.getHistoryTotalKCal().toInt().toString()
-                binding!!.tvMinutes.text =
-                    ((dbHelper!!.getHistoryTotalMinutes() / 60).toDouble()).roundToInt().toString()
+            ((dbHelper!!.getHistoryTotalMinutes() / 60).toDouble()).roundToInt().toString()
 
-                lastWorkout = dbHelper!!.getRecentHistory()
-                if (lastWorkout != null) {
-                    recentPlan = dbHelper!!.getPlanByPlanId(lastWorkout!!.PlanId.toInt())
+            lastWorkout = dbHelper!!.getRecentHistory()
+            if (lastWorkout != null) {
+                recentPlan = dbHelper!!.getPlanByPlanId(lastWorkout!!.PlanId.toInt())
 
-                    if (recentPlan!!.planDays == Constant.PlanDaysYes) {
-                        binding!!.tvRecentWorkOutName.text = recentPlan!!.planName
-                        val item = dbHelper!!.getDaysPlanData(lastWorkout!!.DayId)
-                        recentPlan!!.planMinutes = item!!.Minutes
-                        recentPlan!!.planWorkouts = item!!.Workouts
-                    } else {
-                        binding!!.tvRecentWorkOutName.text = lastWorkout!!.PlanName
-                    }
+                if (recentPlan!!.planDays == Constant.PlanDaysYes) {
 
-                    binding!!.tvRecentTime.text = pref!!.parseTime(
-                        lastWorkout!!.DateTime,
-                        Constant.DATE_TIME_24_FORMAT,
-                        "HH:mm"
-                    )
-                    binding!!.imgRecentWorkout.setImageResource(
-                        pref!!.getDrawableId(
-                            recentPlan!!.planThumbnail,
-                            mContext
-                        )
-                    )
+                    val item = dbHelper!!.getDaysPlanData(lastWorkout!!.DayId)
+                    recentPlan!!.planMinutes = item!!.Minutes
+                    recentPlan!!.planWorkouts = item!!.Workouts
                 }
+
+
             }
 
         } catch (e: Exception) {
@@ -276,7 +241,7 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
         fun onMyTrainingClick() {
 //            val i = Intent(mContext, MyTrainingActivity::class.java)
             val i = Intent(mContext, MainActivity::class.java)
-            i.putExtra(Constant.FROMMYTRAININGFRAGMENT,2)
+            i.putExtra(Constant.FROMMYTRAININGFRAGMENT, 2)
             startActivity(i)
         }
 
@@ -313,7 +278,6 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
             startActivity(i)*/
         }
     }
-
 
 
     override fun onSuccess() {

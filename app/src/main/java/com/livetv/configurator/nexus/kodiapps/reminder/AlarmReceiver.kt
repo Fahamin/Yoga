@@ -16,9 +16,9 @@ import android.os.SystemClock
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -67,15 +67,21 @@ class AlarmReceiver : BroadcastReceiver() {
         mAlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val intent = Intent(context, AlarmReceiver::class.java)
-        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
         intent.putExtra(Constant.EXTRA_REMINDER_ID, ID.toString())
-        mPendingIntent = PendingIntent.getBroadcast(context, ID, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        // Fixed: Use FLAG_IMMUTABLE unless you specifically need mutability
+        mPendingIntent = PendingIntent.getBroadcast(
+            context,
+            ID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
 
         val c = Calendar.getInstance()
         val currentTime = c.timeInMillis
         val diffTime = calendar.timeInMillis - currentTime
-        mAlarmManager!!.setExact(AlarmManager.RTC_WAKEUP,calendar.timeInMillis,mPendingIntent!!)
+        mAlarmManager!!.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, mPendingIntent!!)
 
         val receiver = ComponentName(context, BootReceiver::class.java)
         val pm = context.packageManager
@@ -84,8 +90,6 @@ class AlarmReceiver : BroadcastReceiver() {
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
             PackageManager.DONT_KILL_APP
         )
-
-
     }
 
     fun setRepeatAlarm(context: Context, calendar: Calendar, ID: Int, RepeatTime: Long) {

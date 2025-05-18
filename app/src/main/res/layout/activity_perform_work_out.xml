@@ -347,8 +347,8 @@
                     tools:text="15" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:onClick="@{(v)->handler.onSkipReadyToGoClick()}"
                     android:src="@drawable/wp_ic_next_exercise"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -554,8 +554,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/llExcInfoStep">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginStart="@dimen/_40sdp"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:layout_marginEnd="@dimen/_40sdp"
@@ -565,8 +565,8 @@
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:onClick="@{(v)->handler.onNextExerciseClick()}"
                     android:src="@drawable/wp_ic_next_exercise"
                     android:tint="@color/white"
