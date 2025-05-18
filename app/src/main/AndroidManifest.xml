@@ -18,6 +18,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Yoga">
         <activity
+            android:name=".presentation.activity.PauseBeforeStartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.CompletedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.RestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.MusicListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.MetricImperialUnitsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.ReplaceExerciseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.IntroductionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.PerformWorkOutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.EditPlanActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.activity.MyTrainingActivity"
             android:exported="false" />
 
@@ -86,7 +113,7 @@
             android:name=".presentation.activity.DiscoverDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.activity.MainActivity"
             android:exported="true" />
     </application>
 

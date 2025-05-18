@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.livetv.configurator.nexus.kodiapps.MainActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.WhatsYourGoalAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant

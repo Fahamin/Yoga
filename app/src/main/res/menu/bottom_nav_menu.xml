@@ -10,10 +10,6 @@
         android:icon="@drawable/ic_menu_library"
         android:title="@string/menu_discover" />
 
-    <item
-        android:id="@+id/menu_add"
-        android:icon="@drawable/ic_baseline_add_24"
-        android:title="@string/menu_my_training" />
 
     <item
         android:id="@+id/menu_report"

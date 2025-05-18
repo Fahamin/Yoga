@@ -63,7 +63,9 @@ class NewTrainingAdapter(internal var context: Context) :
         }
         notifyDataSetChanged()
     }
-
+    fun onChangePosition(fromPos: Int, toPos: Int) {
+        //Collections.swap(data, fromPos, toPos)
+    }
     fun removeAt(pos: Int) {
         data.removeAt(pos)
         notifyItemRemoved(pos)

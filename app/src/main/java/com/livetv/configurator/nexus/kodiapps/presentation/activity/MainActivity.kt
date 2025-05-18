@@ -1,8 +1,9 @@
-package com.livetv.configurator.nexus.kodiapps
+package com.livetv.configurator.nexus.kodiapps.presentation.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.ViewPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.databinding.ActivityMainBinding
@@ -10,7 +11,6 @@ import com.livetv.configurator.nexus.kodiapps.presentation.fragments.DiscoverFra
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.MyTrainingFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.ReportsFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.SettingFragment
-import com.livetv.configurator.nexus.kodiapps.presentation.fragments.TrainingAddFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomBarNav.selectedItemId = when(position) {
                     0 -> R.id.menu_my_training
                     1 -> R.id.menu_discover
-                    2 -> R.id.menu_add
-                    3 -> R.id.menu_report
+                    2 -> R.id.menu_report
                     else -> R.id.menu_setting
                 }
             }
@@ -44,9 +43,8 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.menu_my_training -> binding.vPager.currentItem = 0
                 R.id.menu_discover -> binding.vPager.currentItem = 1
-                R.id.menu_add -> binding.vPager.currentItem = 2
-                R.id.menu_report -> binding.vPager.currentItem = 3
-                R.id.menu_setting -> binding.vPager.currentItem = 4
+                R.id.menu_report -> binding.vPager.currentItem = 2
+                R.id.menu_setting -> binding.vPager.currentItem = 3
             }
             true
         }
@@ -62,8 +60,7 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomBarNav.selectedItemId = when(selectedPage) {
                     0 -> R.id.menu_my_training
                     1 -> R.id.menu_discover
-                    2 -> R.id.menu_add
-                    3 -> R.id.menu_report
+                    2 -> R.id.menu_report
                     else -> R.id.menu_setting
                 }
             }
@@ -76,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         vPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         vPagerAdapter.addFrag(MyTrainingFragment(), getString(R.string.menu_my_training))
         vPagerAdapter.addFrag(DiscoverFragment(), getString(R.string.menu_discover))
-        vPagerAdapter.addFrag(TrainingAddFragment(), getString(R.string.menu_my_training))
+      //  vPagerAdapter.addFrag(TrainingAddFragment(), getString(R.string.menu_my_training))
         vPagerAdapter.addFrag(ReportsFragment(), getString(R.string.menu_report))
         vPagerAdapter.addFrag(SettingFragment(), getString(R.string.menu_setting))
 

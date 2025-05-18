@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.livetv.configurator.nexus.kodiapps.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.HomePlansAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.HomeWeekGoalAdapter
@@ -27,6 +26,7 @@ import com.livetv.configurator.nexus.kodiapps.presentation.activity.DaysPlanDeta
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.DiscoverActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.ExercisesListActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.HistoryActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingExcListActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.RecentActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.SetYourWeeklyGoalActivity

@@ -68,6 +68,11 @@ class Prefs(context: Context) {
         editor.apply()
     }
 
+    fun setPref(key: String?, value: Long) {
+        editor.putLong(key, value)
+        editor.apply()
+    }
+
     fun setPref(key: String?, value: Boolean) {
         editor.putBoolean(key, value)
         editor.apply()
@@ -75,6 +80,10 @@ class Prefs(context: Context) {
 
     fun getPref(key: String?, def: Boolean): Boolean {
         return sharedPreferences.getBoolean(key, def)
+    }
+
+    fun getPref(context: Context,key: String, def: Long): Long {
+        return sharedPreferences.getLong(key, def)
     }
 
     fun getPref(key: String?, def: Int): Int {
@@ -96,7 +105,6 @@ class Prefs(context: Context) {
     }
 
 
-
     fun validate(target: String, pattern: String): Boolean {
         return if (TextUtils.isEmpty(target)) {
             false
@@ -105,7 +113,6 @@ class Prefs(context: Context) {
             r.matcher(target).matches()
         }
     }
-
 
 
     fun getDeviceWidth(context: Context): Int {
@@ -173,9 +180,6 @@ class Prefs(context: Context) {
         }
         return false
     }
-
-
-
 
 
     fun hideKeyBoard(c: Context, v: View) {
@@ -328,7 +332,6 @@ class Prefs(context: Context) {
 
         return str
     }
-
 
 
     fun sendExceptionReport(e: Exception) {
@@ -875,8 +878,6 @@ class Prefs(context: Context) {
     }
 
 
-
-
     fun isToday(timeInMillis: Long): Boolean {
         val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
         val date = dateFormat.format(timeInMillis)
@@ -995,12 +996,11 @@ class Prefs(context: Context) {
         val p3 = p2 % 60
         p2 /= 60
 
-        if(p2 > 0)
-        {
-            return  formatter.format(p2)+":"+formatter.format(p3)+":"+formatter.format(p1)
+        if (p2 > 0) {
+            return formatter.format(p2) + ":" + formatter.format(p3) + ":" + formatter.format(p1)
 
         }
-        return formatter.format(p3)+":"+formatter.format(p1)
+        return formatter.format(p3) + ":" + formatter.format(p1)
     }
 
     fun DownloadTTSEngine(context: Context) {
@@ -1071,7 +1071,7 @@ class Prefs(context: Context) {
 
     }
 
-    fun setComBackIn30Min(context: Context){
+    fun setComBackIn30Min(context: Context) {
         val intent = Intent(context, AlarmBroadcastReceiver::class.java)
         intent.putExtra(Constant.extraReminderId, "" + SystemClock.elapsedRealtime())
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -1082,7 +1082,7 @@ class Prefs(context: Context) {
             PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val  futureInMillis = SystemClock.elapsedRealtime () + 18000
+        val futureInMillis = SystemClock.elapsedRealtime() + 18000
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent)
     }
 
@@ -1109,7 +1109,7 @@ class Prefs(context: Context) {
         return weightValue * 2.2046226218488
     }
 
-    fun getafterPointValue(value:Float):String{
+    fun getafterPointValue(value: Float): String {
         val format = DecimalFormat("#.##")
         return format.format(value)
     }
@@ -1302,15 +1302,17 @@ class Prefs(context: Context) {
             val format = SimpleDateFormat(Constant.CapDateFormatDisplay, Locale.ENGLISH)
             val calendar = Calendar.getInstance(Locale.ENGLISH)
 
-            when (getFirstWeekDayNameByDayNo(getPref( Constant.PREF_FIRST_DAY_OF_WEEK, 1))) {
+            when (getFirstWeekDayNameByDayNo(getPref(Constant.PREF_FIRST_DAY_OF_WEEK, 1))) {
                 "Sunday" -> {
                     calendar.firstDayOfWeek = Calendar.SUNDAY
                     calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
                 }
+
                 "Monday" -> {
                     calendar.firstDayOfWeek = Calendar.MONDAY
                     calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
                 }
+
                 "Saturday" -> {
                     calendar.firstDayOfWeek = Calendar.SATURDAY
                     calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY)
@@ -1380,7 +1382,7 @@ class Prefs(context: Context) {
             sendIntentGmail.putExtra(Intent.EXTRA_EMAIL, arrayOf("developerjd60@gmail.com"))
             sendIntentGmail.putExtra(
                 Intent.EXTRA_SUBJECT,
-                content.resources.getString(R.string.app_name)+" - Android"
+                content.resources.getString(R.string.app_name) + " - Android"
             )
             content.startActivity(sendIntentGmail)
         } catch (e: Exception) {
@@ -1392,7 +1394,7 @@ class Prefs(context: Context) {
             )
             sendIntentIfGmailFail.putExtra(
                 Intent.EXTRA_SUBJECT,
-                content.resources.getString(R.string.app_name)+" - Android"
+                content.resources.getString(R.string.app_name) + " - Android"
             )
             if (sendIntentIfGmailFail.resolveActivity(content.packageManager) != null) {
                 content.startActivity(sendIntentIfGmailFail)
@@ -1401,7 +1403,8 @@ class Prefs(context: Context) {
     }
 
     fun openUrl(content: Context, strUrl: String) {
-        val appPackageName = content.getPackageName() // getPackageName() from Context or Activity object
+        val appPackageName =
+            content.getPackageName() // getPackageName() from Context or Activity object
         try {
             content.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(strUrl)))
         } catch (e: ActivityNotFoundException) {

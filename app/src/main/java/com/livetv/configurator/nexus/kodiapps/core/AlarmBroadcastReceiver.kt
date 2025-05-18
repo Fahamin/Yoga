@@ -12,7 +12,7 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import com.livetv.configurator.nexus.kodiapps.MainActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.db.DataHelper
 import com.livetv.configurator.nexus.kodiapps.model.ReminderTableClass

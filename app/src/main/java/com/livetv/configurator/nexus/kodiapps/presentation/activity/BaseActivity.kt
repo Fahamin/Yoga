@@ -36,7 +36,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
-import com.livetv.configurator.nexus.kodiapps.MainActivity
+import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.SideMenuAdapter
 import com.livetv.configurator.nexus.kodiapps.core.AlertDialogHelper
