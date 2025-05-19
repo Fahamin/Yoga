@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 tools:listitem="@layout/item_whats_your_goal" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnNext"
                 style="@style/txt_fff_18"
                 android:layout_width="match_parent"
@@ -80,6 +80,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/btn_bg_round_gradiant"
+
                 android:backgroundTint="@color/box_select"
                 android:text="@string/next"
                 android:visibility="visible" />

@@ -149,7 +149,7 @@
 
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSave"
             style="@style/txt_fff_18"
             android:layout_width="wrap_content"
@@ -160,6 +160,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_50sdp"
             android:background="@drawable/btn_bg_round_gradiant"
+
             android:text="@string/save"
             />
 

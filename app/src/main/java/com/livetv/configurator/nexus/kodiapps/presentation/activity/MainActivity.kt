@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomBarNav.selectedItemId = when(position) {
                     0 -> R.id.menu_my_training
                     1 -> R.id.menu_discover
-                    2 -> R.id.menu_report
                     else -> R.id.menu_setting
                 }
             }
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.menu_my_training -> binding.vPager.currentItem = 0
                 R.id.menu_discover -> binding.vPager.currentItem = 1
-                R.id.menu_report -> binding.vPager.currentItem = 2
                 R.id.menu_setting -> binding.vPager.currentItem = 3
             }
             true
@@ -60,7 +58,6 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomBarNav.selectedItemId = when(selectedPage) {
                     0 -> R.id.menu_my_training
                     1 -> R.id.menu_discover
-                    2 -> R.id.menu_report
                     else -> R.id.menu_setting
                 }
             }
@@ -73,8 +70,6 @@ class MainActivity : AppCompatActivity() {
         vPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         vPagerAdapter.addFrag(MyTrainingFragment(), getString(R.string.menu_my_training))
         vPagerAdapter.addFrag(DiscoverFragment(), getString(R.string.menu_discover))
-      //  vPagerAdapter.addFrag(TrainingAddFragment(), getString(R.string.menu_my_training))
-        vPagerAdapter.addFrag(ReportsFragment(), getString(R.string.menu_report))
         vPagerAdapter.addFrag(SettingFragment(), getString(R.string.menu_setting))
 
         binding.vPager.adapter = vPagerAdapter

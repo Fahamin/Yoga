@@ -12,11 +12,6 @@
 
 
     <item
-        android:id="@+id/menu_report"
-        android:icon="@drawable/ic_menu_report"
-        android:title="@string/menu_report" />
-
-    <item
         android:id="@+id/menu_setting"
         android:icon="@drawable/ic_menu_setting"
         android:title="@string/menu_setting" />

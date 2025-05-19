@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnContinue"
                     style="@style/txt_fff_18"
                     android:layout_width="@dimen/_90sdp"
@@ -59,13 +59,14 @@
                     android:onClick="@{(v)->handler.onPlusTimeClick()}"
                     android:text="@string/_20s" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSkip"
                     style="@style/txt_theme_16"
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:background="@drawable/btn_bg_round_gradiant"
+
                     android:backgroundTint="@color/setting_color_blue"
                     android:onClick="@{(v)->handler.onSkipClick()}"
                     android:text="@string/skip"

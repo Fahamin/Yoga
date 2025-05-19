@@ -95,7 +95,7 @@
                 android:src="@drawable/icon_add_my_training_big"
                 android:visibility="gone"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnStart"
                 style="@style/txt_fff_18"
                 android:layout_width="match_parent"

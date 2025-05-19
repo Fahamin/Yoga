@@ -57,12 +57,14 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/txt_fff_20"
                         android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_25sdp"
+                        android:textColor="@color/black"
                         android:textAllCaps="true"
                         android:text="@string/quite_exercise_msg"/>
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnQuit"
                         style="@style/txt_fff_18"
                         android:layout_width="@dimen/_150sdp"
@@ -70,16 +72,16 @@
                         android:layout_marginTop="@dimen/_50sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:background="@drawable/btn_bg_round_gradiant"
+
                         android:text="@string/quit" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnContinue"
                         style="@style/txt_fff_18"
                         android:layout_width="@dimen/_150sdp"
                         android:layout_height="@dimen/btn_height"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:background="@drawable/btn_bg_round_gradiant"
-                        android:backgroundTint="#72FFFFFF"
+                        android:background="@color/black"
                         android:text="@string/str_continue" />
 
                     <TextView

@@ -546,7 +546,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:layout_marginBottom="@dimen/_15sdp"
-                    android:background="@drawable/btn_bg_round_gradiant"
                     android:onClick="@{(v)->handler.onNextExerciseClick()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -131,7 +131,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnFinished"
                 style="@style/txt_fff_18"
                 android:layout_width="match_parent"
@@ -142,6 +142,7 @@
                 android:backgroundTint="@color/box_select"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/btn_bg_round_gradiant"
+
                 android:text="@string/finished"
                 />
 
