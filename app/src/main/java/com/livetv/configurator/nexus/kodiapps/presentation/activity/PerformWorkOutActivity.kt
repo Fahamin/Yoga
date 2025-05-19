@@ -12,6 +12,7 @@ import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -63,7 +64,8 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_perform_work_out)
+        binding = ActivityPerformWorkOutBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         pref = Prefs(this)
 
         initIntentParam()
@@ -75,36 +77,38 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
     private fun initIntentParam() {
         try {
             if (intent.extras != null) {
-                if (intent.extras!!.containsKey("workoutPlanData")) {
-                    val str = intent.getStringExtra("workoutPlanData")
-                    workoutPlanData = Gson().fromJson(str, object :
-                        TypeToken<HomePlanTableClass>() {}.type)!!
+                workoutPlanData = intent.getStringExtra("workoutPlanData")?.let {
+                    Gson().fromJson(it, object : TypeToken<HomePlanTableClass>() {}.type)
                 }
 
-                if (intent.extras!!.containsKey("ExcList")) {
-                    val str = intent.getStringExtra("ExcList")
-                    exercisesList = Gson().fromJson(
-                        str,
-                        object : TypeToken<java.util.ArrayList<HomeExTableClass>>() {}.type
-                    )!!
-//                    binding!!.progressBarTop.max = exercisesList!!.size
+                exercisesList = intent.getStringExtra("ExcList")?.let {
+                    Gson().fromJson(it, object : TypeToken<ArrayList<HomeExTableClass>>() {}.type)
                 }
 
-                if (intent.extras!!.containsKey("currentPos")) {
-                    currentPos = intent.getIntExtra("ExcList", 0)
-                    if (exercisesList.isNullOrEmpty().not()) {
-                        currentExe = exercisesList!!.get(currentPos)
-                    }
+                currentPos = intent.getIntExtra("currentPos", 0)
+
+                // Ensure we have valid exercises list and position
+                if (!exercisesList.isNullOrEmpty()) {
+                    currentExe = exercisesList!!.getOrNull(currentPos) ?: exercisesList!!.first()
                 } else {
-                    if (exercisesList.isNullOrEmpty().not()) {
-                        currentExe = exercisesList!!.get(0)
-                    }
+                    // Handle empty exercise list case
+                    finishWithError("No exercises provided")
+                    return
                 }
+            } else {
+                // Handle no extras case
+                finishWithError("No workout data provided")
+                return
             }
-
         } catch (e: Exception) {
             e.printStackTrace()
+            finishWithError("Invalid workout data")
         }
+    }
+
+    private fun finishWithError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        finish()
     }
 
     private fun init() {
@@ -149,28 +153,54 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
     }
 
     private fun loadWorkoutImage() {
+        binding?.viewFlipper?.removeAllViews()
 
-        binding!!.viewFlipper.removeAllViews()
-        val listImg: ArrayList<String>? =
-            pref!!.ReplaceSpacialCharacters(currentExe!!.exPath!!)
-                ?.let { pref!!.getAssetItems(this, it) }
+        currentExe?.let { ex ->
+            ex.exPath?.let { path ->
+                val listImg = pref.ReplaceSpacialCharacters(path)?.let {
+                    pref.getAssetItems(this, it)
+                }
 
-        if (listImg != null) {
-            for (i in 0 until listImg.size) {
-                val imgview = ImageView(this)
-                //            Glide.with(mContext).load("//android_asset/burpee/".plus(i.toString()).plus(".png")).into(imgview)
-                Glide.with(this).load(listImg[i]).into(imgview)
-                imgview.layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT
-                )
-                binding!!.viewFlipper.addView(imgview)
+                listImg?.takeIf { it.isNotEmpty() }?.forEach { imgPath ->
+                    val imgview = ImageView(this).apply {
+                        layoutParams = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT
+                        )
+                        Glide.with(this@PerformWorkOutActivity)
+                            .load(imgPath)
+                            .into(this)
+                    }
+                    binding?.viewFlipper?.addView(imgview)
+                }
+
+                binding?.viewFlipper?.apply {
+                    isAutoStart = true
+                    setFlipInterval(resources.getInteger(R.integer.viewfliper_animation))
+                    startFlipping()
+                }
+            } ?: run {
+                // Handle case where exPath is null or empty
+                loadDefaultImage()
             }
+        } ?: run {
+            // Handle case where currentExe is null
+            loadDefaultImage()
         }
+    }
 
-        binding!!.viewFlipper.isAutoStart = true
-        binding!!.viewFlipper.setFlipInterval(resources.getInteger(R.integer.viewfliper_animation))
-        binding!!.viewFlipper.startFlipping()
+    private fun loadDefaultImage() {
+        // Load a placeholder image when no exercise images are available
+        val imgview = ImageView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            Glide.with(this@PerformWorkOutActivity)
+                .load(R.drawable.ic_music_default_cover)
+                .into(this)
+        }
+        binding?.viewFlipper?.addView(imgview)
     }
 
     private fun initReadyToGo() {
