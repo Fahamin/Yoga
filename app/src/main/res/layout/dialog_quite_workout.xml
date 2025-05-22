@@ -55,6 +55,7 @@
                         android:src="@drawable/ic_workout_white"/>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -85,6 +86,7 @@
                         android:text="@string/str_continue" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvComeback"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -25,6 +25,11 @@
         android:paddingStart="@dimen/_5sdp"
         android:paddingEnd="@dimen/_5sdp">
 
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgBack"
             android:layout_width="50dp"
@@ -44,6 +49,7 @@
             android:paddingEnd="@dimen/_5sdp">
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -74,12 +80,14 @@
                     android:gravity="center">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/txt_666_14"
                         android:text="@string/tip_weekly_goal"/>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/txt_000_16"
@@ -96,6 +104,7 @@
                         android:layout_marginTop="@dimen/_5sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTrainingDay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -112,6 +121,7 @@
                         android:background="@color/gray_light_"/>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/txt_000_16"
@@ -128,6 +138,7 @@
                         android:layout_marginTop="@dimen/_5sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvFirstDayOfWeek"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

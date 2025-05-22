@@ -33,6 +33,7 @@
                     android:src="@drawable/cover_back" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvName"
                     style="@style/txt_fff_16"
                     android:layout_width="match_parent"

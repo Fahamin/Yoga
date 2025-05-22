@@ -8,10 +8,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.MyApplication
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
@@ -43,7 +45,9 @@ class SettingFragment : BaseFragment(), CallbackListener {
         super.onViewCreated(view, savedInstanceState)
 
         pref = Prefs(requireContext())
-        
+        Fun(requireActivity())
+        val adContainerView = view.findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(requireActivity(), adContainerView)
         init()
     }
 

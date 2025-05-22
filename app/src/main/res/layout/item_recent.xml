@@ -43,6 +43,7 @@
                     android:paddingBottom="@dimen/_12sdp">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvRecentWorkOutName"
                         style="@style/txt_fff_16"
                         android:layout_width="match_parent"
@@ -53,6 +54,7 @@
                         tools:text="Morning Warmup" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvTime"
                         style="@style/txt_gray_12"
                         android:layout_width="match_parent"

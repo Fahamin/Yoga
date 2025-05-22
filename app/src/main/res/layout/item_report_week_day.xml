@@ -11,6 +11,7 @@
         android:padding="@dimen/_5sdp">
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/tvDay"
             style="@style/txt_999_14"
             android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
             android:src="@drawable/bg_circle_border" />
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/tvDate"
             style="@style/txt_666_14"
             android:layout_width="wrap_content"

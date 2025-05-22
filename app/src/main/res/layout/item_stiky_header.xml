@@ -7,6 +7,7 @@
 
 
         <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvHeader"
                 style="@style/txt_4a4_12"
                 android:layout_width="wrap_content"

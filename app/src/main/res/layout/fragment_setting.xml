@@ -29,6 +29,12 @@
 
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -61,6 +67,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -90,6 +97,7 @@
                             </LinearLayout>
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -100,6 +108,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvRestTime"
                                 style="@style/txt_fff_14"
                                 android:layout_width="wrap_content"
@@ -141,6 +150,7 @@
                             </LinearLayout>
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -151,6 +161,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvCountDownTime"
                                 style="@style/txt_fff_14"
                                 android:layout_width="wrap_content"
@@ -194,6 +205,7 @@
                             </LinearLayout>
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -232,6 +244,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -261,6 +274,7 @@
                             </LinearLayout>
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -307,6 +321,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -316,6 +331,7 @@
                                     android:textStyle="bold" />
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -362,6 +378,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -370,6 +387,7 @@
                                     android:text="@string/voice_language" />
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -408,6 +426,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -455,6 +474,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -486,6 +506,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -520,6 +541,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -580,6 +602,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -627,6 +650,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -668,6 +692,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -677,6 +702,7 @@
                                     android:textStyle="bold" />
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -721,6 +747,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -758,6 +785,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -793,6 +821,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -840,6 +869,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -887,6 +917,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -934,6 +965,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"

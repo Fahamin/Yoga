@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,8 +15,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.NewTrainingAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
@@ -44,17 +45,11 @@ class NewTrainingActivity : BaseActivity(), CallbackListener {
 //        AdUtils.loadBannerAd(binding!!.adView,this)
 //        AdUtils.loadBannerGoogleAd(this,binding!!.llAdView,Constant.BANNER_TYPE)
 
-        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-            AdUtils.loadGoogleBannerAd(this, binding!!.llAdView, Constant.BANNER_TYPE)
-            binding!!.llAdViewFacebook.visibility=View.GONE
-        }else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-            AdUtils.loadFacebookBannerAd(this,binding!!.llAdViewFacebook)
-        }else{
-            binding!!.llAdViewFacebook.visibility=View.GONE
-        }
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
 
         pref = Prefs(this)
-
 
         initIntentParam()
         init()

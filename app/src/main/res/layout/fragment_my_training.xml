@@ -30,6 +30,12 @@
 
         </LinearLayout>
 
+
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
@@ -94,6 +100,7 @@
                                 android:background="@drawable/bg_gradiant" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_gray_12"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -127,6 +134,7 @@
                             android:gravity="center">
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/description"
                                 style="@style/txt_gray_14"
                                 android:layout_width="match_parent"

@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -16,8 +18,9 @@ import com.livetv.configurator.nexus.kodiapps.adapter.DurationAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PainReliefPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PostureCorrectionAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.TrainingGoalAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
+import com.livetv.configurator.nexus.kodiapps.core.Fun.addShow
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.AdsCallback
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
@@ -28,7 +31,7 @@ import com.livetv.configurator.nexus.kodiapps.presentation.activity.ExercisesLis
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingActivity
 import java.util.Date
 
-class DiscoverFragment : BaseFragment() , CallbackListener {
+class DiscoverFragment : BaseFragment(), CallbackListener {
     lateinit var binding: FragmentDiscoverBinding
     var painReliefPagerAdapter: PainReliefPagerAdapter? = null
     var flexibilityViewPagerAdapter: PainReliefPagerAdapter? = null
@@ -49,17 +52,23 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_discover, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pref = Prefs(requireContext())
+        Fun(requireActivity())
+
+        val adContainerView = view.findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(requireActivity(), adContainerView)
         initView()
     }
 
     private fun initView() {
+
+
         init()
     }
 
@@ -79,32 +88,9 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
         painReliefPagerAdapter!!.setEventListener(object : PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
-                val item = painReliefPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenpainRelief(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenpainRelief(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenpainRelief(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenpainRelief(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenpainRelief(position)
-                }
+                addShow()
+                startNextScreenpainRelief(position)
+
             }
 
         })
@@ -122,32 +108,9 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
         flexibilityViewPagerAdapter!!.setEventListener(object :
             PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
-                val item = flexibilityViewPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenflexibility(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenflexibility(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenflexibility(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenflexibility(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenflexibility(position)
-                }
+                addShow()
+                startNextScreenflexibility(position)
+
             }
 
         })
@@ -164,34 +127,9 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
         beginnerViewPagerAdapter!!.setEventListener(object : PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
+                startNextScreembeginner(position)
 
-                val item = beginnerViewPagerAdapter!!.getItem(position)
-
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreembeginner(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreembeginner(position)
-                                }
-                            })
-                        } else {
-                            startNextScreembeginner(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreembeginner(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreembeginner(position)
-                }
             }
 
         })
@@ -210,33 +148,9 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
             PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
 
-                val item = fatBurningViewPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
+                addShow()
+                startNextScreenfatBurning(position)
 
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils!!.loadGoogleFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenfatBurning(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils!!.loadFacebookFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenfatBurning(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenfatBurning(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenfatBurning(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenfatBurning(position)
-                }
             }
 
         })
@@ -370,10 +284,10 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
             getBodyFocusData()
             getDurationData()
 
-            val lastDate = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
+            val lastDate = pref!!.getPref(Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
             val currDate = pref!!.parseTime(Date(), "dd-MM-yyyy")
             val currDateStr = pref!!.parseTime(currDate.time, "dd-MM-yyyy")
-            val str = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN, "")
+            val str = pref!!.getPref(Constant.PREF_RANDOM_DISCOVER_PLAN, "")
             if (lastDate.isNullOrEmpty()
                     .not() && currDateStr.equals(lastDate) && str.isNullOrEmpty().not()
             ) {
@@ -382,10 +296,15 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
 
             } else {
                 randomPlan = dbHelper!!.getRandomDiscoverPlan()
-                pref!!.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
+                pref!!.setPref(Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
                 pref!!.setPref(Constant.PREF_RANDOM_DISCOVER_PLAN, Gson().toJson(randomPlan))
             }
-            binding!!.imgCover.setImageResource(pref!!.getDrawableId(randomPlan!!.planImage, mContext))
+            binding!!.imgCover.setImageResource(
+                pref!!.getDrawableId(
+                    randomPlan!!.planImage,
+                    mContext
+                )
+            )
             binding!!.tvTitle.text = randomPlan!!.planName
             if (randomPlan!!.shortDes.isNullOrEmpty().not())
                 binding!!.tvDesc.text = randomPlan!!.shortDes
@@ -467,7 +386,6 @@ class DiscoverFragment : BaseFragment() , CallbackListener {
         }
 
     }
-
 
 
     override fun onSuccess() {

@@ -24,7 +24,10 @@
         android:paddingTop="@dimen/_70sdp"
         android:paddingEnd="@dimen/_5sdp"
         android:paddingBottom="@dimen/_20sdp">
-
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <LinearLayout
             android:id="@+id/llContainer"
             android:layout_width="match_parent"
@@ -44,6 +47,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_22"
                     android:layout_width="wrap_content"
                     android:textStyle="bold"
@@ -61,6 +65,7 @@
             </LinearLayout>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 style="@style/txt_fff_16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,6 +82,7 @@
                 android:layout_weight="1">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"

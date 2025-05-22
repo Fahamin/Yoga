@@ -33,6 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvDateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                     tools:text="May 21, 8:15AM"/>
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvName"
                     style="@style/txt_000_14"
                     android:layout_width="match_parent"
@@ -57,6 +59,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvDuration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,6 +70,7 @@
                         tools:text="00:11"/>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvCalorie"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

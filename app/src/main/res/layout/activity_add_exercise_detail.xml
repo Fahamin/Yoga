@@ -19,6 +19,11 @@
         android:orientation="vertical"
         android:background="@color/primary">
 
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -54,6 +59,7 @@
                         android:src="@drawable/ic_close" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvReset"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -81,6 +87,7 @@
                             android:onClick="@{(v)->handler.onMinusTimeClick()}"/>
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTime"
                             style="@style/txt_000_22"
                             android:layout_width="@dimen/_100sdp"
@@ -109,6 +116,7 @@
                     android:paddingEnd="@dimen/_15sdp">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -130,6 +138,7 @@
                             android:tint="@color/green_text"/>
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -140,6 +149,7 @@
                     </LinearLayout>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvDes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -167,29 +177,10 @@
             android:layout_gravity="bottom"
             android:text="@string/add" />
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_gravity="bottom"
-            ads:adSize="BANNER"
-            />
-        <RelativeLayout
-            android:id="@+id/llAdView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:visibility="gone"/>
-        <LinearLayout
-            android:id="@+id/llAdViewFacebook"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="visible" />
+
+
+
+
 
     </LinearLayout>
 

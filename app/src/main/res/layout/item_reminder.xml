@@ -33,6 +33,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvTime"
                         style="@style/txt_000_20"
                         android:layout_width="0dp"
@@ -64,12 +65,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_000_18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/repeat" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvDays"
                             style="@style/txt_999_14"
                             android:layout_width="wrap_content"

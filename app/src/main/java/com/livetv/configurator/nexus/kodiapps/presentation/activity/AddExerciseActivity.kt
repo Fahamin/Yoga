@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +12,7 @@ import com.google.gson.Gson
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.AddExerciseAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.AddExerciseCategoryAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
-import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
@@ -32,15 +32,9 @@ class AddExerciseActivity : BaseActivity(), CallbackListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_exercise)
 
-//        AdUtils.loadBannerAd(binding!!.adView,this)
-        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-            AdUtils.loadGoogleBannerAd(this, binding!!.llAdView, Constant.BANNER_TYPE)
-            binding!!.llAdViewFacebook.visibility = View.GONE
-        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-            AdUtils.loadFacebookBannerAd(this, binding!!.llAdViewFacebook)
-        } else {
-            binding!!.llAdViewFacebook.visibility = View.GONE
-        }
+        Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
 
         pref = Prefs(this)
 

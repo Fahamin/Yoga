@@ -12,10 +12,12 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.view.View
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.databinding.ActivityIntroductionBinding
@@ -32,6 +34,7 @@ class IntroductionActivity : BaseActivity(), CallbackListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_introduction)
 
         pref = Prefs(this)
+         Fun(this)
 
         initIntentParam()
         init()

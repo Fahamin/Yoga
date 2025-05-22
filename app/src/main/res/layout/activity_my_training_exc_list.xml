@@ -28,6 +28,7 @@
                 layout="@layout/topbar" />
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvSave"
                 style="@style/txt_fff_14"
                 android:layout_width="wrap_content"
@@ -44,6 +45,7 @@
                 android:onClick="@{(v)->handler.onSaveClick()}"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvEdit"
                 style="@style/txt_fff_14"
                 android:layout_width="wrap_content"

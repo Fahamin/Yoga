@@ -35,6 +35,7 @@
                 android:paddingBottom="@dimen/_12sdp">
 
                <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvName"
                     style="@style/txt_000_18"
                     android:layout_width="match_parent"

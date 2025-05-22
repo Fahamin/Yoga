@@ -45,6 +45,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_22"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"

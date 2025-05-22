@@ -98,6 +98,7 @@
                 android:gravity="center">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvTitleText_"
                     style="@style/txt_fff_20"
                     android:textAllCaps="true"
@@ -151,6 +152,7 @@
                     android:visibility="@{isMoreShow ? View.VISIBLE : View.GONE, default=gone}" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

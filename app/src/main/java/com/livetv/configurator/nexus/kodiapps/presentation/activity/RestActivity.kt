@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 
@@ -16,6 +17,7 @@ import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.core.CountDownTimerWithPause
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.MyApplication
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
@@ -45,7 +47,9 @@ class RestActivity : BaseActivity(), CallbackListener {
 //        AdUtils.loadBannerGoogleAd(this,binding!!.llAdView,Constant.BANNER_TYPE)
 
         pref = Prefs(this)
-
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
         initIntentParam()
         init()
     }

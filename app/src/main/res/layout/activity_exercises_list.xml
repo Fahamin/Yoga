@@ -19,6 +19,11 @@
         android:background="@color/primaryDark"
         android:orientation="vertical">
 
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/main_content"
             android:layout_width="match_parent"
@@ -82,6 +87,7 @@
 
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvTitle"
                                 style="@style/txt_fff_24"
                                 android:layout_width="wrap_content"
@@ -90,6 +96,7 @@
                                 tools:text="Morninig warmup" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvShortDes"
                                 style="@style/txt_fff_14"
                                 android:layout_width="wrap_content"
@@ -116,6 +123,7 @@
                         app:layout_collapseMode="pin">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTitleText_"
                             style="@style/txt_fff_20"
                             android:layout_width="wrap_content"
@@ -198,6 +206,7 @@
                                 android:background="@color/setting_color_blue" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvName"
                                 style="@style/txt_fff_14"
                                 android:layout_width="0dp"
@@ -234,6 +243,7 @@
                             android:paddingBottom="@dimen/_15sdp">
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvIntroductionDes"
                                 style="@style/txt_fff_14"
                                 android:layout_width="match_parent"
@@ -260,6 +270,7 @@
                                     android:tint="@color/setting_color_blue" />
 
                                 <TextView
+                    android:fontFamily="@font/poppins"
                                     android:id="@+id/tvTestName"
                                     style="@style/txt_fff_16"
                                     android:layout_width="wrap_content"
@@ -303,6 +314,7 @@
                             android:background="@color/setting_color_blue" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvWorkoutTime"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
@@ -319,6 +331,7 @@
                             android:src="@drawable/icon_instruction_dot" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTotalWorkout"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
@@ -366,6 +379,7 @@
                 android:padding="@dimen/dp10">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/btnStart"
                     style="@style/txt_fff_18"
                     android:layout_width="wrap_content"

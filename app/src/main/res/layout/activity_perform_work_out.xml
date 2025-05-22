@@ -25,6 +25,11 @@
             android:orientation="vertical">
 
             <FrameLayout
+                android:id="@+id/ad_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -220,6 +225,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvMusicName"
                     style="@style/txt_fff_16"
                     android:layout_width="0dp"
@@ -292,6 +298,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         style="@style/txt_fff_22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -299,6 +306,7 @@
                         android:textSize="30sp" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvExcNameReadyToGo"
                         style="@style/txt_fff_18"
                         android:layout_width="match_parent"
@@ -334,6 +342,7 @@
                     app:layout_constraintTop_toBottomOf="@id/llWorkoutInfo" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvCountDownReadyToGO"
                     style="@style/txt_fff_22"
                     android:layout_width="wrap_content"
@@ -387,6 +396,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvCompletedSec"
                             style="@style/txt_green_22"
                             android:layout_width="wrap_content"
@@ -396,6 +406,7 @@
                             tools:text="18 " />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTotalSec"
                             style="@style/txt_fff_22"
                             android:layout_width="wrap_content"
@@ -406,6 +417,7 @@
                     </LinearLayout>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvExcName"
                         style="@style/txt_fff_22"
                         android:layout_width="match_parent"
@@ -502,6 +514,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvExcNameStep"
                             style="@style/txt_fff_20"
                             android:layout_width="wrap_content"
@@ -512,6 +525,7 @@
                             tools:text="Bottom Leg Lift Lift" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -521,6 +535,7 @@
                             android:text="X" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTotalStep"
                             style="@style/txt_fff_22"
                             android:layout_width="wrap_content"
@@ -578,6 +593,7 @@
         </LinearLayout>
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/tvAnimation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

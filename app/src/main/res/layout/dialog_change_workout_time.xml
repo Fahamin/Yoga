@@ -61,6 +61,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTitle"
                             style="@style/txt_000_22"
                             android:layout_width="0dp"
@@ -79,6 +80,7 @@
                     </LinearLayout>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvDes"
                         style="@style/txt_666_14"
                         android:layout_width="match_parent"
@@ -104,6 +106,7 @@
                             android:src="@drawable/ic_minus_time" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvTime"
                             style="@style/txt_000_18"
                             android:layout_width="0dp"
@@ -131,6 +134,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvReset"
                         style="@style/txt_fff_18"
                         android:layout_width="0dp"
@@ -142,6 +146,7 @@
                         android:textAllCaps="true" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvSave"
                         style="@style/txt_fff_18"
                         android:layout_width="0dp"
@@ -172,6 +177,7 @@
                         android:tint="@color/white"/>
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvPos"
                         style="@style/txt_fff_18"
                         android:layout_width="0dp"

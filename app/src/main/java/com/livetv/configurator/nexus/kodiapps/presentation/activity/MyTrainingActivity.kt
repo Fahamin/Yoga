@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
@@ -17,6 +18,7 @@ import com.google.gson.Gson
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.MyTrainingAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
@@ -37,6 +39,9 @@ class MyTrainingActivity : BaseActivity(), CallbackListener {
         pref = Prefs(this)
 
         initTopBar(binding!!.topbar)
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
 //        initDrawerMenu(true)
         init()
     }

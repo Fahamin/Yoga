@@ -22,6 +22,7 @@
             android:orientation="vertical">
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 style="@style/txt_000_18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
                     android:src="@drawable/ic_mute_gray" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_000_16"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -86,6 +88,7 @@
                     android:paddingEnd="@dimen/_10sdp">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         style="@style/txt_000_16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -93,6 +96,7 @@
                         android:text="@string/voice_guide" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         style="@style/txt_666_14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,6 +140,7 @@
                     android:paddingEnd="@dimen/_10sdp">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         style="@style/txt_000_16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -143,6 +148,7 @@
                         android:text="@string/coach_tips" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         style="@style/txt_666_14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -168,6 +174,7 @@
                 android:padding="@dimen/_12sdp">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/txt_fff_18"

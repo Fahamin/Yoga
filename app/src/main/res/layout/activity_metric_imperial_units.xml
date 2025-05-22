@@ -51,13 +51,20 @@
                 android:paddingEnd="@dimen/_15sdp"
                 android:onClick="@{(v)->handler.onWeightUnitClick()}">
 
+                <FrameLayout
+                    android:id="@+id/ad_view_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/weight_unit" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvWeightUnit"
                     style="@style/txt_999_14"
                     android:layout_width="wrap_content"
@@ -79,12 +86,14 @@
                 android:onClick="@{(v)->handler.onHeightUnitClick()}">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/height_unit" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvHeightUnit"
                     style="@style/txt_999_14"
                     android:layout_width="wrap_content"

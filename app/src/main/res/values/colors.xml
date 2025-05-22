@@ -13,7 +13,7 @@
     <color name="colorPrimary">#0c0c0e</color>
     <color name="colorPrimaryDark">#0c0c0e</color>
     <color name="colorSettingbg">#1c1c1e</color>
-    <color name="theme">#0d55ff</color>
+    <color name="theme">#E91E63</color>
 
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
@@ -35,7 +35,7 @@
     <color name="gray_light__">#eeeeee</color>
     <color name="gray_light____">#d3d1d2</color>
     <color name="black_66">#66000000</color>
-    <color name="box_select">#0D49D4</color>
+    <color name="box_select">#E91E63</color>
 
     <color name="select_transparancy">#e2e2e2</color>
 
@@ -66,7 +66,7 @@
     <color name="colorSix">#CF2E2E</color>
     <color name="default_icon">#969697</color>
 
-    <color name="setting_color_blue">#0d55ff</color>
+    <color name="setting_color_blue">#E91E63</color>
     <color name="setting_color_orange">#e2791c</color>
     <color name="setting_color_red">#aa3131</color>
     <color name="setting_color_green">#1b7b85</color>

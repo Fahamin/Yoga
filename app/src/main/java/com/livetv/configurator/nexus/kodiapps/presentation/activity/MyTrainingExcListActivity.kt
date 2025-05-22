@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,6 +15,7 @@ import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.MyTrainingExcAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.NewTrainingAdapter
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
@@ -44,6 +46,10 @@ class MyTrainingExcListActivity : BaseActivity(), CallbackListener {
         initIntentParam()
 //        initDrawerMenu(true)
         init()
+
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
     }
 
     private fun initIntentParam() {

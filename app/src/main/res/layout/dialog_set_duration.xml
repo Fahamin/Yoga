@@ -27,6 +27,7 @@
                 android:padding="@dimen/_20sdp"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvSeconds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
         </LinearLayout>
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

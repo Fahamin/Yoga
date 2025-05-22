@@ -31,6 +31,7 @@
                 android:src="@drawable/ic_menu_training_plan" />
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvMenuName"
                 style="@style/txt_side_menu"
                 android:layout_width="wrap_content"

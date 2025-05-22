@@ -33,6 +33,7 @@
                     android:paddingBottom="@dimen/_12sdp">
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvName"
                         style="@style/txt_fff_16"
                         android:layout_width="match_parent"
@@ -40,6 +41,7 @@
                         android:text="Bridge" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvTime"
                         style="@style/txt_fff_14"
                         android:layout_width="match_parent"

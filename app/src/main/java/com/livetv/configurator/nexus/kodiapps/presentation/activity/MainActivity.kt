@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.ViewPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.databinding.ActivityMainBinding
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.DiscoverFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.MyTrainingFragment
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Fun(this)
         setupViewPager()
 
         binding.vPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {

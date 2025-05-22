@@ -3,7 +3,9 @@ package com.livetv.configurator.nexus.kodiapps.presentation.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -12,8 +14,9 @@ import com.livetv.configurator.nexus.kodiapps.adapter.DurationAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PainReliefPagerAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.PostureCorrectionAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.TrainingGoalAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
+import com.livetv.configurator.nexus.kodiapps.core.Fun.addShow
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.AdsCallback
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
@@ -46,23 +49,12 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         )
         pref = Prefs(this)
 
-//        initDrawerMenu(true)
-//        initBottomBarNavigation(binding!!.bottomBar)
+
         init()
 
-        /* if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-             AdUtils.loadGoogleBannerAd(this, binding!!.llAdView, Constant.BANNER_TYPE)
-             binding!!.llAdViewFacebook.visibility = View.GONE
-         } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-             AdUtils.loadFacebookBannerAd(this, binding!!.llAdViewFacebook)
-         } else {
-             binding!!.llAdViewFacebook.visibility = View.GONE
-         }
-
-         if (Utils.isPurchased(this)) {
-             binding!!.llAdViewFacebook.visibility = View.GONE
-         }
- */
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
 
     }
 
@@ -93,32 +85,9 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
 
         painReliefPagerAdapter!!.setEventListener(object : PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
-                val item = painReliefPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils.loadGoogleFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenpainRelief(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils.loadFacebookFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenpainRelief(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenpainRelief(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenpainRelief(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenpainRelief(position)
-                }
+                addShow()
+                startNextScreenpainRelief(position)
+
             }
 
         })
@@ -136,32 +105,9 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         flexibilityViewPagerAdapter!!.setEventListener(object :
             PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
-                val item = flexibilityViewPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils.loadGoogleFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenflexibility(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils.loadFacebookFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenflexibility(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenflexibility(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenflexibility(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenflexibility(position)
-                }
+                addShow()
+                startNextScreenflexibility(position)
+
             }
 
         })
@@ -178,34 +124,9 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
 
         beginnerViewPagerAdapter!!.setEventListener(object : PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
+                startNextScreembeginner(position)
 
-                val item = beginnerViewPagerAdapter!!.getItem(position)
-
-                if (!item.isPro) {
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils.loadGoogleFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreembeginner(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils.loadFacebookFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreembeginner(position)
-                                }
-                            })
-                        } else {
-                            startNextScreembeginner(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreembeginner(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreembeginner(position)
-                }
             }
 
         })
@@ -223,34 +144,9 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         fatBurningViewPagerAdapter!!.setEventListener(object :
             PainReliefPagerAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
+                startNextScreenfatBurning(position)
 
-                val item = fatBurningViewPagerAdapter!!.getItem(position)
-                if (!item.isPro) {
-
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils.loadGoogleFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenfatBurning(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils.loadFacebookFullAd(this@DiscoverActivity, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenfatBurning(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenfatBurning(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenfatBurning(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenfatBurning(position)
-                }
             }
 
         })
@@ -259,6 +155,7 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         binding!!.rvTrainingGoal.adapter = trainingGoalAdapter
         trainingGoalAdapter!!.setEventListener(object : TrainingGoalAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
                 val item = trainingGoalAdapter!!.getItem(position)
                 val i = Intent(this@DiscoverActivity, DiscoverDetailActivity::class.java)
                 i.putExtra("workoutPlanData", Gson().toJson(item))
@@ -277,6 +174,7 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         postureCorrectionAdapter!!.setEventListener(object :
             PostureCorrectionAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
                 val item = postureCorrectionAdapter!!.getItem(position)
                 val i = Intent(this@DiscoverActivity, ExercisesListActivity::class.java)
                 i.putExtra("workoutPlanData", Gson().toJson(item))
@@ -293,6 +191,7 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         binding!!.rvBodyFocus.adapter = bodyFocusAdapter
         bodyFocusAdapter!!.setEventListener(object : TrainingGoalAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
                 val item = bodyFocusAdapter!!.getItem(position)
                 val i = Intent(this@DiscoverActivity, DiscoverDetailActivity::class.java)
                 i.putExtra("workoutPlanData", Gson().toJson(item))
@@ -309,6 +208,7 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         binding!!.rvDuration.adapter = durationAdapter
         durationAdapter!!.setEventListener(object : DurationAdapter.EventListener {
             override fun onItemClick(position: Int, view: View) {
+                addShow()
                 val item = durationAdapter!!.getItem(position)
                 val i = Intent(this@DiscoverActivity, DiscoverDetailActivity::class.java)
                 i.putExtra("workoutPlanData", Gson().toJson(item))
@@ -384,10 +284,10 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
             getBodyFocusData()
             getDurationData()
 
-            val lastDate = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
+            val lastDate = pref!!.getPref(Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
             val currDate = pref!!.parseTime(Date(), "dd-MM-yyyy")
             val currDateStr = pref!!.parseTime(currDate.time, "dd-MM-yyyy")
-            val str = pref!!.getPref( Constant.PREF_RANDOM_DISCOVER_PLAN, "")
+            val str = pref!!.getPref(Constant.PREF_RANDOM_DISCOVER_PLAN, "")
             if (lastDate.isNullOrEmpty()
                     .not() && currDateStr.equals(lastDate) && str.isNullOrEmpty().not()
             ) {
@@ -396,8 +296,8 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
 
             } else {
                 randomPlan = dbHelper.getRandomDiscoverPlan()
-                pref!!.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
-                pref!!.setPref( Constant.PREF_RANDOM_DISCOVER_PLAN, Gson().toJson(randomPlan))
+                pref!!.setPref(Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, currDateStr)
+                pref!!.setPref(Constant.PREF_RANDOM_DISCOVER_PLAN, Gson().toJson(randomPlan))
             }
             binding!!.imgCover.setImageResource(pref!!.getDrawableId(randomPlan!!.planImage, this))
             binding!!.tvTitle.text = randomPlan!!.planName

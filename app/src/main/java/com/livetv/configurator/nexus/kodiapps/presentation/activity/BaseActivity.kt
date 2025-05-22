@@ -64,15 +64,15 @@ open class BaseActivity() : AppCompatActivity(){
     internal lateinit var commonReciever: MyEventServiceReciever
     var topBarBinding: TopbarBinding? = null
     lateinit var dbHelper: DataHelper
-//    private var mRewardedVideoAd: RewardedVideoAd? = null
-lateinit var prefs: Prefs
+    //    private var mRewardedVideoAd: RewardedVideoAd? = null
+    lateinit var prefs: Prefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         toast = Toast.makeText(getActivity(), "", Toast.LENGTH_LONG)
         val intentFilter = IntentFilter()
         prefs = Prefs(this)
-        
+
         intentFilter.addAction(Constant.FINISH_ACTIVITY)
         commonReciever = MyEventServiceReciever()
         LocalBroadcastManager.getInstance(this).registerReceiver(

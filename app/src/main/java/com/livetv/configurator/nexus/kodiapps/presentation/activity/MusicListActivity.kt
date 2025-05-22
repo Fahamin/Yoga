@@ -3,6 +3,7 @@ package com.livetv.configurator.nexus.kodiapps.presentation.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +12,7 @@ import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.MusicListAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.MyApplication
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
@@ -30,7 +32,9 @@ class MusicListActivity : BaseActivity(), CallbackListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_music_list)
 
         pref = Prefs(this)
-
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
         initIntentParam()
         init()
     }

@@ -18,6 +18,11 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -62,6 +67,7 @@
                     android:src="@drawable/ic_pro_white" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvTitle"
                     style="@style/txt_fff_24"
                     android:layout_width="wrap_content"
@@ -124,6 +130,7 @@
                             android:src="@drawable/ic_red_line" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvName"
                             style="@style/txt_fff_16"
                             android:layout_width="0dp"
@@ -147,6 +154,7 @@
                         android:paddingBottom="@dimen/_15sdp">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvIntroductionDes"
                             style="@style/txt_fff_14"
                             android:layout_width="match_parent"
@@ -177,6 +185,7 @@
                         android:onClick="@{(v)->handler.onBeginnerClick()}">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -186,6 +195,7 @@
                             android:textAllCaps="true" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvBeginnerTime"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
@@ -210,6 +220,7 @@
                         android:onClick="@{(v)->handler.onIntermediateClick()}">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -219,6 +230,7 @@
                             android:textAllCaps="true" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvInterMediateTime"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
@@ -244,6 +256,7 @@
                         android:onClick="@{(v)->handler.onAdvanceClick()}">
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_20"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -253,6 +266,7 @@
                             android:textAllCaps="true" />
 
                         <TextView
+                    android:fontFamily="@font/poppins"
                             android:id="@+id/tvAdvancedTime"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"

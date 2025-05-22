@@ -7,16 +7,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.HomePlansAdapter
 import com.livetv.configurator.nexus.kodiapps.adapter.HomeWeekGoalAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
+import com.livetv.configurator.nexus.kodiapps.core.Fun
+import com.livetv.configurator.nexus.kodiapps.core.Fun.addShow
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
-import com.livetv.configurator.nexus.kodiapps.core.interfaces.AdsCallback
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.TopBarClickListener
 import com.livetv.configurator.nexus.kodiapps.databinding.FragmentMyTrainingBinding
@@ -59,6 +60,10 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
         super.onViewCreated(view, savedInstanceState)
 
         pref = Prefs(requireActivity())
+        Fun(requireActivity())
+
+        val adContainerView = view.findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(requireActivity(), adContainerView)
         initview()
     }
 
@@ -84,33 +89,8 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
         homePlansAdapter!!.setEventListener(object : HomePlansAdapter.EventListener {
 
             override fun onItemClick(position: Int, view: View) {
-                val item = homePlansAdapter!!.getItem(position)
-                if (!item.isPro) {
-                    Log.e("TAG", "onItemClick:OnItemL:::: ${item.isPro}")
-                    if (onClickAd == Constant.FIRST_CLICK_COUNT && Constant.FIRST_CLICK_COUNT != 0) {
-                        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-                            AdUtils.loadGoogleFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenMove(position)
-                                }
-                            })
-                        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-                            AdUtils.loadFacebookFullAd(mContext, object : AdsCallback {
-                                override fun startNextScreenAfterAd() {
-                                    startNextScreenMove(position)
-                                }
-                            })
-                        } else {
-                            startNextScreenMove(position)
-                        }
-                        onClickAd = 1
-                    } else {
-                        startNextScreenMove(position)
-                        onClickAd += 1
-                    }
-                } else {
-                    startNextScreenMove(position)
-                }
+                addShow()
+                startNextScreenMove(position)
 
 
             }

@@ -37,6 +37,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/imgWeek"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvWeekName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,6 +50,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvCurrentDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,6 +63,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvWeekDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

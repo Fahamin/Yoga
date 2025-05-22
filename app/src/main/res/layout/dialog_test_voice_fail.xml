@@ -15,6 +15,7 @@
         android:padding="@dimen/_15sdp">
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/txt_000_14"
@@ -22,6 +23,7 @@
             android:text="@string/dl_test_voice_no_msg_test"/>
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/tvDownloadTTSEngine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,6 +34,7 @@
             android:text="@string/download_tts_engine"/>
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/tvSelectTTSEngine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

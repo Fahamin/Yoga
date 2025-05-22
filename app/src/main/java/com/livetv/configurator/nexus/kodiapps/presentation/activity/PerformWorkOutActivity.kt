@@ -10,6 +10,7 @@ import android.view.View
 import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -22,9 +23,10 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R
 import com.livetv.configurator.nexus.kodiapps.adapter.WorkoutProgressIndicatorAdapter
-import com.livetv.configurator.nexus.kodiapps.core.AdUtils
 import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.core.CountDownTimerWithPause
+import com.livetv.configurator.nexus.kodiapps.core.Fun
+import com.livetv.configurator.nexus.kodiapps.core.Fun.addShow
 import com.livetv.configurator.nexus.kodiapps.core.MyApplication
 import com.livetv.configurator.nexus.kodiapps.core.MySoundUtil
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
@@ -67,7 +69,9 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
         binding = ActivityPerformWorkOutBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         pref = Prefs(this)
-
+         Fun(this)
+        val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
+        Fun.showBanner(this, adContainerView)
         initIntentParam()
         init()
         initReadyToGo()
@@ -464,23 +468,9 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
     }
 
     private fun goToCompleteScreen() {
-        if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_GOOGLE) {
-            AdUtils.loadGoogleFullAd(this, object : AdsCallback {
-                override fun startNextScreenAfterAd() {
-                    startCompleteActivity()
-                }
-
-            })
-        } else if (Constant.AD_TYPE_FB_GOOGLE == Constant.AD_FACEBOOK) {
-            AdUtils.loadFacebookFullAd(this, object : AdsCallback {
-                override fun startNextScreenAfterAd() {
-                    startCompleteActivity()
-                }
-
-            })
-        }else{
+        addShow()
             startCompleteActivity()
-        }
+
 
 
     }

@@ -39,6 +39,7 @@
                 android:tint="@color/white" />
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tv_title"
                 style="@style/txt_fff_20"
                 android:layout_width="0dp"
@@ -87,6 +88,7 @@
                     android:tint="@color/white" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tv_title"
                     style="@style/txt_fff_18"
                     android:layout_width="wrap_content"

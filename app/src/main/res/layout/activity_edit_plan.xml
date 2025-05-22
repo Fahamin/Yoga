@@ -64,6 +64,7 @@
                         android:src="@drawable/ic_red_line" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvWorkoutTime"
                         style="@style/txt_333_14"
                         android:layout_width="wrap_content"
@@ -80,6 +81,7 @@
                         android:src="@drawable/icon_instruction_dot" />
 
                     <TextView
+                    android:fontFamily="@font/poppins"
                         android:id="@+id/tvTotalWorkout"
                         style="@style/txt_333_14"
                         android:layout_width="wrap_content"
@@ -118,30 +120,12 @@
             android:onClick="@{(v)->handler.onSaveClick()}"
             android:text="@string/save" />
 
-        <com.google.android.gms.ads.AdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            ads:adSize="BANNER"
-            />
 
-        <RelativeLayout
-            android:id="@+id/llAdView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:visibility="gone"/>
 
-        <LinearLayout
-            android:id="@+id/llAdViewFacebook"
+        <FrameLayout
+            android:id="@+id/ad_view_container"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp50"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="visible" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

@@ -24,6 +24,7 @@
             android:orientation="vertical">
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvName"
                 style="@style/txt_333_16"
                 android:layout_width="match_parent"
@@ -31,6 +32,7 @@
                 android:text="Height increase (before 18)" />
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvMinutes"
                 style="@style/txt_999_14"
                 android:layout_width="wrap_content"

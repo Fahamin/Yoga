@@ -13,6 +13,7 @@
         android:padding="15dp">
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/genderTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
             android:layout_marginTop="15dp">
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvMale"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -40,6 +42,7 @@
                 android:textColor="#666666"/>
 
             <TextView
+                    android:fontFamily="@font/poppins"
                 android:id="@+id/tvFemale"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,6 +58,7 @@
         </LinearLayout>
 
         <TextView
+                    android:fontFamily="@font/poppins"
             android:id="@+id/birthYearTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

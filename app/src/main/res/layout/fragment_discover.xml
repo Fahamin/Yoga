@@ -28,6 +28,13 @@
 
         </LinearLayout>
 
+
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -82,6 +89,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvTitle"
                                 style="@style/txt_fff_20"
                                 android:layout_width="wrap_content"
@@ -89,6 +97,7 @@
                                 android:text="@string/_2_min_lower_back_stretching" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvDesc"
                                 style="@style/txt_fff_16"
                                 android:layout_width="wrap_content"
@@ -106,6 +115,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,6 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/poppins"
                     android:paddingStart="@dimen/_15sdp"
                     android:text="@string/training_goal" />
 
@@ -139,6 +150,7 @@
                     tools:listitem="@layout/item_training_goal" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,6 +166,7 @@
                     android:layout_gravity="top" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +184,7 @@
                     tools:listitem="@layout/item_training_goal" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -218,6 +232,7 @@
                                 android:src="@drawable/icon_add_my_training_white" />
 
                             <TextView
+                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_18"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -232,6 +247,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -247,6 +263,7 @@
                     android:layout_gravity="top" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -263,6 +280,7 @@
                     tools:listitem="@layout/item_training_goal" />
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -278,6 +296,7 @@
 
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     style="@style/txt_fff_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

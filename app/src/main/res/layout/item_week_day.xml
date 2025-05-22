@@ -29,6 +29,7 @@
                 android:padding="7dp">
 
                 <TextView
+                    android:fontFamily="@font/poppins"
                     android:id="@+id/tvDate"
                     style="@style/txt_999_18"
                     android:layout_width="wrap_content"
