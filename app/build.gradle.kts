@@ -12,8 +12,8 @@ android {
         applicationId = "com.livetv.configurator.nexus.kodiapps"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 23
+        versionName = "2.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

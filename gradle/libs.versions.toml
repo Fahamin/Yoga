@@ -1,5 +1,5 @@
 [versions]
-agp = "8.11.0-alpha10"
+agp = "8.12.0-alpha02"
 audienceNetworkSdk = "6.20.0"
 coreUtils = "1.9.0"
 gson = "2.13.1"
