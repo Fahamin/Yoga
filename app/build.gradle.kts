@@ -70,10 +70,10 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core)
     implementation(libs.gson)
-    implementation(project(":mpchart"))
-    implementation(project(":horixontalpic"))
+
+
     implementation(project(":numberpik"))
-    implementation(project(":exre"))
+
 
 
 }

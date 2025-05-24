@@ -10,7 +10,6 @@ import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.databinding.ActivityMainBinding
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.DiscoverFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.MyTrainingFragment
-import com.livetv.configurator.nexus.kodiapps.presentation.fragments.ReportsFragment
 import com.livetv.configurator.nexus.kodiapps.presentation.fragments.SettingFragment
 
 class MainActivity : AppCompatActivity() {
