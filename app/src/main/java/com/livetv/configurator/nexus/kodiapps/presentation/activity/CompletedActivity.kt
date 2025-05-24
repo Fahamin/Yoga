@@ -397,17 +397,7 @@ class CompletedActivity : BaseActivity(), CallbackListener {
         }
 
         isDataSaved = true
-        if (isGoToHistory) {
-            LocalBroadcastManager.getInstance(this@CompletedActivity)
-                .sendBroadcast(Intent(Constant.FINISH_ACTIVITY))
-            val intent = Intent(
-                this@CompletedActivity,
-                HistoryActivity::class.java
-            )
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-            finishActivity()
-        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
