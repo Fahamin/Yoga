@@ -8,8 +8,6 @@ import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
 import com.livetv.configurator.nexus.kodiapps.model.ExTableClass
 import com.livetv.configurator.nexus.kodiapps.model.HistoryDetailsClass
-import com.livetv.configurator.nexus.kodiapps.model.HistoryTableClass
-import com.livetv.configurator.nexus.kodiapps.model.HistoryWeekDataClass
 import com.livetv.configurator.nexus.kodiapps.model.HomeExTableClass
 import com.livetv.configurator.nexus.kodiapps.model.HomePlanTableClass
 import com.livetv.configurator.nexus.kodiapps.model.Music
@@ -1318,54 +1316,6 @@ class DataHelper(private val mContext: Context) {
         return strMinWeight
     }
 
-    //* Todo History *//*
-    fun getHistoryList(): ArrayList<HistoryTableClass> {
-
-        val arrWeightTableClass: ArrayList<HistoryTableClass> = ArrayList()
-
-        var db: SQLiteDatabase? = null
-        var cursor: Cursor? = null
-
-        try {
-            db = getReadWriteDB()
-            val query = "Select * From $HistoryTable"
-
-            cursor = db.rawQuery(query, null)
-
-            if (cursor != null && cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val aClass = HistoryTableClass()
-                    aClass.hId = cursor.getString(cursor.getColumnIndexOrThrow(HId))
-                    aClass.hPlanName = cursor.getString(cursor.getColumnIndexOrThrow(HPlanName))
-                    aClass.hPlanId = cursor.getString(cursor.getColumnIndexOrThrow(HPlanId))
-                    aClass.hDayName = cursor.getString(cursor.getColumnIndexOrThrow(HDayName))
-                    aClass.hBurnKcal = cursor.getString(cursor.getColumnIndexOrThrow(HBurnKcal))
-                    aClass.hTotalEx = cursor.getString(cursor.getColumnIndexOrThrow(HTotalEx))
-                    aClass.hKg = cursor.getString(cursor.getColumnIndexOrThrow(HKg))
-                    aClass.hFeet = cursor.getString(cursor.getColumnIndexOrThrow(HFeet))
-                    aClass.hInch = cursor.getString(cursor.getColumnIndexOrThrow(HInch))
-                    aClass.hFeelRate = cursor.getString(cursor.getColumnIndexOrThrow(HFeelRate))
-                    aClass.hCompletionTime =
-                        cursor.getString(cursor.getColumnIndexOrThrow(HCompletionTime))
-                    aClass.hDateTime = cursor.getString(cursor.getColumnIndexOrThrow(HDateTime))
-                    arrWeightTableClass.add(aClass)
-                }
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null && !cursor.isClosed) {
-                cursor.close()
-            }
-            if (db != null && db.isOpen) {
-                db.close()
-                db.releaseReference()
-            }
-        }
-
-        return arrWeightTableClass
-    }
 
     fun getHistoryTotalMinutes(): Int {
         var db: SQLiteDatabase? = null
@@ -1513,69 +1463,6 @@ class DataHelper(private val mContext: Context) {
     }
 
     // Todo Get Weekly history data
-    fun getWeekDayOfHistory(): ArrayList<HistoryWeekDataClass> {
-        var db: SQLiteDatabase? = null
-        var cursor: Cursor? = null
-        val weekStart = "WeekStart"
-        val WeekEnd = "WeekEnd"
-        val WeekNumber = "WeekNumber"
-        val arrHistoryData = ArrayList<HistoryWeekDataClass>()
-
-        try {
-            db = getReadWriteDB()
-
-            val query = "select strftime('%W', $HDateTime) $WeekNumber," +
-                    "    max(date($HDateTime, 'weekday 0' ,'-6 day')) $weekStart," +
-                    "    max(date($HDateTime, 'weekday 0', '-0 day')) $WeekEnd " +
-                    "from $HistoryTable " +
-                    "group by $WeekNumber"
-
-            cursor = db.rawQuery(query, null)
-
-            if (cursor != null && cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
-
-                    val historyWeekDataClass = HistoryWeekDataClass()
-
-                    historyWeekDataClass.weekNumber =
-                        cursor.getString(cursor.getColumnIndexOrThrow(WeekNumber))
-                    historyWeekDataClass.weekStart =
-                        cursor.getString(cursor.getColumnIndexOrThrow(weekStart))
-                    historyWeekDataClass.weekEnd =
-                        cursor.getString(cursor.getColumnIndexOrThrow(WeekEnd))
-                    historyWeekDataClass.totKcal = getTotBurnWeekKcal(
-                        historyWeekDataClass.weekStart,
-                        historyWeekDataClass.weekEnd
-                    )
-                    historyWeekDataClass.totTime = getTotWeekWorkoutTime(
-                        historyWeekDataClass.weekStart,
-                        historyWeekDataClass.weekEnd
-                    )
-
-                    historyWeekDataClass.arrHistoryDetail = getWeekHistoryData(
-                        historyWeekDataClass.weekStart,
-                        historyWeekDataClass.weekEnd
-                    )
-
-                    historyWeekDataClass.totWorkout = historyWeekDataClass.arrHistoryDetail.size
-                    arrHistoryData.add(historyWeekDataClass)
-                }
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null && !cursor.isClosed) {
-                cursor.close()
-            }
-            if (db != null && db.isOpen) {
-                db.close()
-                db.releaseReference()
-            }
-        }
-
-        return arrHistoryData
-    }
 
     fun getTotBurnWeekKcal(strWeekStart: String, strWeekEnd: String): Int {
         var db: SQLiteDatabase? = null

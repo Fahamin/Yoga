@@ -69,12 +69,17 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
         binding = ActivityPerformWorkOutBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         pref = Prefs(this)
-         Fun(this)
+        Fun(this)
         val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
         Fun.showBanner(this, adContainerView)
         initIntentParam()
         init()
-        initReadyToGo()
+        try {
+            initReadyToGo()
+
+        } catch (e: Exception) {
+
+        }
 
     }
 
@@ -128,23 +133,22 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
         initMusic(true)
 
-        if (pref!!.getPref( Constant.PREF_IS_SOUND_MUTE, false)){
+        if (pref!!.getPref(Constant.PREF_IS_SOUND_MUTE, false)) {
             binding!!.imgSound.setImageResource(R.drawable.ic_mute_sound)
-        }else{
+        } else {
             binding!!.imgSound.setImageResource(R.drawable.ic_sound_round)
         }
-
 
 
     }
 
     private fun initMusic(isPlayMusic: Boolean) {
 
-        if (pref!!.getPref( Constant.PREF_IS_MUSIC_SELECTED, false)) {
-            val str = pref!!.getPref( Constant.PREF_MUSIC, "")
+        if (pref!!.getPref(Constant.PREF_IS_MUSIC_SELECTED, false)) {
+            val str = pref!!.getPref(Constant.PREF_MUSIC, "")
             if (str.isNullOrEmpty().not()) {
                 currMusic = Gson().fromJson<Music>(str, object : TypeToken<Music>() {}.type)
-                if (pref!!.getPref( Constant.PREF_IS_MUSIC_MUTE, false)
+                if (pref!!.getPref(Constant.PREF_IS_MUSIC_MUTE, false)
                         .not()
                 ) {
                     if (isPlayMusic)
@@ -226,7 +230,8 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
         var timeCountDown = 0
 
-        val readyToGoTime = pref!!.getPref(this,Constant.PREF_READY_TO_GO_TIME, Constant.DEFAULT_READY_TO_GO_TIME)
+        val readyToGoTime =
+            pref!!.getPref(this, Constant.PREF_READY_TO_GO_TIME, Constant.DEFAULT_READY_TO_GO_TIME)
         binding!!.progressBarReadyToGo.max = readyToGoTime.toInt()
         binding!!.progressBarReadyToGo.secondaryProgress = readyToGoTime.toInt()
 
@@ -469,8 +474,7 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
     private fun goToCompleteScreen() {
         addShow()
-            startCompleteActivity()
-
+        startCompleteActivity()
 
 
     }
@@ -519,11 +523,11 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
         fun onReadyToGoClick() {
 
-              val i = Intent(this@PerformWorkOutActivity, PauseBeforeStartActivity::class.java)
-              i.putExtra("workoutPlanData", Gson().toJson(currentExe))
-              i.putExtra("nextPos", currentPos + 1)
-              i.putExtra("totalEx", exercisesList!!.size)
-              startActivity(i)
+            val i = Intent(this@PerformWorkOutActivity, PauseBeforeStartActivity::class.java)
+            i.putExtra("workoutPlanData", Gson().toJson(currentExe))
+            i.putExtra("nextPos", currentPos + 1)
+            i.putExtra("totalEx", exercisesList!!.size)
+            startActivity(i)
         }
 
         fun onMusicClick() {
@@ -545,15 +549,15 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
 
         fun onPrevMusicClick() {
-         
-                MyApplication.prevMusic()
-            
+
+            MyApplication.prevMusic()
+
         }
 
         fun onNextMusicClick() {
-          
-                MyApplication.nextMusic()
-            
+
+            MyApplication.nextMusic()
+
         }
 
         fun onSelectMusicClick() {
@@ -611,39 +615,39 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
         dialogSoundOptionPerForm.setContentView(v)
 
         dialogSoundOptionBindingPerForm!!.switchMute.isChecked =
-            pref!!.getPref( Constant.PREF_IS_SOUND_MUTE, false)
+            pref!!.getPref(Constant.PREF_IS_SOUND_MUTE, false)
         dialogSoundOptionBindingPerForm!!.switchCoachTips.isChecked =
-            pref!!.getPref( Constant.PREF_IS_COACH_SOUND_ON, true)
+            pref!!.getPref(Constant.PREF_IS_COACH_SOUND_ON, true)
         dialogSoundOptionBindingPerForm!!.switchVoiceGuide.isChecked =
-            pref!!.getPref( Constant.PREF_IS_INSTRUCTION_SOUND_ON, true)
+            pref!!.getPref(Constant.PREF_IS_INSTRUCTION_SOUND_ON, true)
 
         dialogSoundOptionBindingPerForm!!.switchMute.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 binding!!.imgSound.setImageResource(R.drawable.ic_mute_sound)
                 dialogSoundOptionBindingPerForm!!.switchCoachTips.isChecked = false
                 dialogSoundOptionBindingPerForm!!.switchVoiceGuide.isChecked = false
-                pref!!.setPref( Constant.PREF_IS_SOUND_MUTE, true)
+                pref!!.setPref(Constant.PREF_IS_SOUND_MUTE, true)
             } else {
                 binding!!.imgSound.setImageResource(R.drawable.ic_sound_round)
-                pref!!.setPref( Constant.PREF_IS_SOUND_MUTE, false)
+                pref!!.setPref(Constant.PREF_IS_SOUND_MUTE, false)
             }
         }
 
         dialogSoundOptionBindingPerForm!!.switchCoachTips.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 dialogSoundOptionBindingPerForm!!.switchMute.isChecked = false
-                pref!!.setPref( Constant.PREF_IS_COACH_SOUND_ON, true)
+                pref!!.setPref(Constant.PREF_IS_COACH_SOUND_ON, true)
             } else {
-                pref!!.setPref( Constant.PREF_IS_COACH_SOUND_ON, false)
+                pref!!.setPref(Constant.PREF_IS_COACH_SOUND_ON, false)
             }
         }
 
         dialogSoundOptionBindingPerForm!!.switchVoiceGuide.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 dialogSoundOptionBindingPerForm!!.switchMute.isChecked = false
-                pref!!.setPref( Constant.PREF_IS_INSTRUCTION_SOUND_ON, true)
+                pref!!.setPref(Constant.PREF_IS_INSTRUCTION_SOUND_ON, true)
             } else {
-                pref!!.setPref( Constant.PREF_IS_INSTRUCTION_SOUND_ON, false)
+                pref!!.setPref(Constant.PREF_IS_INSTRUCTION_SOUND_ON, false)
             }
         }
 
@@ -665,12 +669,12 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
                 binding!!.imgPauseMusic.visibility = View.VISIBLE
                 binding!!.imgMusic.setImageResource(R.drawable.ic_music)
                 MyApplication.playMusic(currMusic!!, this@PerformWorkOutActivity)
-                pref!!.setPref( Constant.PREF_IS_MUSIC_MUTE, false)
+                pref!!.setPref(Constant.PREF_IS_MUSIC_MUTE, false)
             } else {
                 binding!!.imgPlayMusic.visibility = View.VISIBLE
                 binding!!.imgPauseMusic.visibility = View.GONE
                 binding!!.imgMusic.setImageResource(R.drawable.ic_music_off)
-                pref!!.setPref( Constant.PREF_IS_MUSIC_MUTE, true)
+                pref!!.setPref(Constant.PREF_IS_MUSIC_MUTE, true)
                 MyApplication.stopMusic()
             }
         }
@@ -692,7 +696,6 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
         super.onPause()
         pauseTimer()
     }
-
 
 
     override fun onDestroy() {
@@ -775,7 +778,6 @@ class PerformWorkOutActivity : BaseActivity(), CallbackListener {
 
 
     private fun saveData() {
-
 
 
         finish()

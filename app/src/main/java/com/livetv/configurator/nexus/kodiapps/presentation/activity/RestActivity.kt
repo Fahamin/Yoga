@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.github.mikephil.charting.utils.Utils
+
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.livetv.configurator.nexus.kodiapps.R

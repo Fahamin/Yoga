@@ -12,8 +12,8 @@ android {
         applicationId = "com.livetv.configurator.nexus.kodiapps"
         minSdk = 24
         targetSdk = 36
-        versionCode = 23
-        versionName = "2.3.0"
+        versionCode = 25
+        versionName = "2.4.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -70,10 +70,10 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core)
     implementation(libs.gson)
-    implementation(project(":mpchart"))
-    implementation(project(":horixontalpic"))
+
+
     implementation(project(":numberpik"))
-    implementation(project(":exre"))
+
 
 
 }

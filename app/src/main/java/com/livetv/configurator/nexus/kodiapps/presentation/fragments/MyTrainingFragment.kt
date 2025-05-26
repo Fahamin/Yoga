@@ -26,12 +26,12 @@ import com.livetv.configurator.nexus.kodiapps.model.HomePlanTableClass
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.DaysPlanDetailActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.DiscoverActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.ExercisesListActivity
-import com.livetv.configurator.nexus.kodiapps.presentation.activity.HistoryActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.MyTrainingExcListActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.RecentActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.SetYourWeeklyGoalActivity
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.SubPlanActivity
+import kotlin.jvm.java
 import kotlin.math.roundToInt
 
 class MyTrainingFragment : BaseFragment(), CallbackListener {
@@ -149,12 +149,6 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
                 homeWeekGoalAdapter = HomeWeekGoalAdapter(mContext)
 
 
-                homeWeekGoalAdapter!!.setEventListener(object : HomeWeekGoalAdapter.EventListener {
-                    override fun onItemClick(position: Int, view: View) {
-                        val i = Intent(mContext, HistoryActivity::class.java)
-                        startActivity(i)
-                    }
-                })
 
             }
 

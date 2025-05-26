@@ -4,28 +4,27 @@
 
 
 
-<!--    <string name="admob_insta_id">ca-app-pub-6013605396446078/5261573805</string>
-    <string name="admob_app_id">ca-app-pub-6013605396446078~5964852208</string>
-    <string name="admob_native_id">ca-app-pub-6013605396446078/3517247298</string>
-    <string name="admob_banner_id">ca-app-pub-6013605396446078/8614248036</string>
+        <string name="admob_insta_id">ca-app-pub-6013605396446078/9815813636</string>
+        <string name="admob_app_id">ca-app-pub-6013605396446078~5964852208</string>
+        <string name="admob_native_id">ca-app-pub-6013605396446078/7357764156</string>
+        <string name="admob_banner_id">ca-app-pub-6013605396446078/1765083165</string>
 
-    <string name="facebook_app_id">308871724906304</string>
-    <string name="fb_insta_id">308871724906304_308873668239443</string>
-    <string name="fb_banner_id">308871724906304_321673193626157</string>
-
-
-    -->
+        <string name="facebook_app_id">308871724906304</string>
+        <string name="fb_insta_id">308871724906304_308873668239443</string>
+        <string name="fb_banner_id">308871724906304_321673193626157</string>
 
 
+
+<!--
     <string name="admob_insta_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_native_id">ca-app-pub-3940256099942544/2247696110</string>
     <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
 
-    
+
     <string name="facebook_app_id">308871724906304</string>
     <string name="fb_insta_id">308871724906304_308873668239443</string>
-    <string name="fb_banner_id">308871724906304_321673193626157</string>
+    <string name="fb_banner_id">308871724906304_321673193626157</string>-->
 
 
     <string name="number_picker_formatter">%02d</string>
