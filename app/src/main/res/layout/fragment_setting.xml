@@ -67,10 +67,10 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                    android:fontFamily="@font/poppins"
                             style="@style/txt_fff_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="@string/workout"
                             android:textAllCaps="true"
                             android:visibility="gone" />
@@ -97,24 +97,24 @@
                             </LinearLayout>
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingEnd="@dimen/_15sdp"
                                 android:text="@string/training_rest"
                                 android:textStyle="bold" />
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvRestTime"
                                 style="@style/txt_fff_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableEnd="@drawable/ic_arrow_drop_down"
                                 android:drawableTint="@color/white"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center_vertical"
                                 android:paddingStart="@dimen/_10sdp"
                                 android:text="10 secs" />
@@ -150,24 +150,24 @@
                             </LinearLayout>
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingEnd="@dimen/_15sdp"
                                 android:text="@string/countdown_time"
                                 android:textStyle="bold" />
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 android:id="@+id/tvCountDownTime"
                                 style="@style/txt_fff_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableEnd="@drawable/ic_arrow_drop_down"
                                 android:drawableTint="@color/white"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center_vertical"
                                 android:paddingStart="@dimen/_10sdp"
                                 android:text="15 secs" />
@@ -205,11 +205,11 @@
                             </LinearLayout>
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingEnd="@dimen/_15sdp"
                                 android:text="@string/sound_options"
@@ -223,7 +223,6 @@
                             android:layout_marginStart="@dimen/dp50"
                             android:layout_marginTop="@dimen/_7sdp"
                             android:background="@color/view_line" />
-
 
 
                     </LinearLayout>
@@ -244,10 +243,10 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="@string/voice_options_tts"
                             android:textAllCaps="true"
                             android:visibility="gone" />
@@ -274,11 +273,11 @@
                             </LinearLayout>
 
                             <TextView
-                    android:fontFamily="@font/poppins"
                                 style="@style/txt_fff_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingEnd="@dimen/_15sdp"
                                 android:text="@string/test_voice"
@@ -321,20 +320,20 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/select_tts_engine"
                                     android:textStyle="bold" />
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:gravity="center_vertical"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:text="@string/google_text_to_speech_engine" />
@@ -378,19 +377,19 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_10sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/voice_language" />
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:gravity="center_vertical"
                                     android:paddingStart="@dimen/_10sdp"
                                     android:text="Default" />
@@ -426,10 +425,10 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_10sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/download_more_tts_language_data" />
@@ -474,10 +473,10 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/device_tts_setting"
@@ -506,11 +505,11 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/poppins"
                             android:text="@string/general_settings"
                             android:textAllCaps="true"
                             android:visibility="gone" />
@@ -541,11 +540,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_10sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/sync_to_google_fit" />
@@ -565,7 +564,6 @@
                             android:layout_marginTop="@dimen/_7sdp"
                             android:background="@color/view_line"
                             android:visibility="gone" />
-
 
 
                         <View
@@ -602,11 +600,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/remind_me_to_workout_every_day"
@@ -650,11 +648,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/metric_and_imperial_units"
@@ -692,20 +690,20 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/language_options"
                                     android:textStyle="bold" />
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_999_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins"
                                     android:gravity="center_vertical"
                                     android:paddingStart="@dimen/_10sdp"
                                     android:text="Default" />
@@ -747,21 +745,21 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/keep_the_screen_on"
                                     android:textStyle="bold" />
 
                                 <androidx.appcompat.widget.SwitchCompat
-                                    android:checked="true"
                                     android:id="@+id/SwitchKeepTheScreenOn"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:checked="true" />
 
                             </LinearLayout>
 
@@ -785,10 +783,10 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                    android:fontFamily="@font/poppins"
                             style="@style/txt_333_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
                             android:text="@string/support_us"
                             android:textAllCaps="true"
                             android:textStyle="bold"
@@ -821,11 +819,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/share_with_friends"
@@ -869,11 +867,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/rate_us"
@@ -917,62 +915,14 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                    android:fontFamily="@font/poppins"
                                     style="@style/txt_fff_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:fontFamily="@font/poppins"
                                     android:paddingStart="@dimen/_15sdp"
                                     android:paddingEnd="@dimen/_15sdp"
                                     android:text="@string/feedback"
-                                    android:textStyle="bold" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_marginStart="@dimen/dp50"
-                            android:layout_marginTop="@dimen/_7sdp"
-                            android:background="@color/view_line" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:gravity="center_vertical"
-                            android:onClick="@{(v)->handler.onPrivacyPolicyClick()}">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/bg_img"
-                                android:backgroundTint="@color/setting_color_red">
-
-                                <androidx.appcompat.widget.AppCompatImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:padding="@dimen/_5sdp"
-                                    android:src="@drawable/ic_eye"
-                                    android:tint="@color/white" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                    android:fontFamily="@font/poppins"
-                                    style="@style/txt_fff_16"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:paddingStart="@dimen/_15sdp"
-                                    android:paddingEnd="@dimen/_15sdp"
-                                    android:text="@string/privacy_policy"
                                     android:textStyle="bold" />
 
                             </LinearLayout>
