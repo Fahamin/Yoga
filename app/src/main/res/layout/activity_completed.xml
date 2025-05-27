@@ -819,7 +819,7 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:background="@drawable/btn_bg_round_gradiant"
                         android:onClick="@{(v)->handler.onNextClick()}"
-                        android:text="@string/next" />
+                        android:text="SAVE" />
 
                 </LinearLayout>
 

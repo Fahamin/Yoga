@@ -51,10 +51,10 @@ class CompletedActivity : BaseActivity(), CallbackListener {
         initIntentParam()
         init()
 
-         Fun(this)
+        Fun(this)
         val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
         Fun.showBanner(this, adContainerView)
-        
+
     }
 
     private fun initIntentParam() {
@@ -92,7 +92,7 @@ class CompletedActivity : BaseActivity(), CallbackListener {
             try {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
 
-                    val weightUnit = pref.getPref( Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
+                    val weightUnit = pref.getPref(Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
 
                     if (weightUnit != Constant.DEF_KG) {
                         pref.setPref(
@@ -146,11 +146,11 @@ class CompletedActivity : BaseActivity(), CallbackListener {
     private fun setBmiCalculation() {
 
         try {
-            var lastWeight = pref.getPref( Constant.PREF_LAST_INPUT_WEIGHT, 0f)
-            val lastFoot = pref.getPref( Constant.PREF_LAST_INPUT_FOOT, 0)
-            val lastInch = pref.getPref( Constant.PREF_LAST_INPUT_INCH, 0F)
+            var lastWeight = pref.getPref(Constant.PREF_LAST_INPUT_WEIGHT, 0f)
+            val lastFoot = pref.getPref(Constant.PREF_LAST_INPUT_FOOT, 0)
+            val lastInch = pref.getPref(Constant.PREF_LAST_INPUT_INCH, 0F)
 
-            val weightUnit = pref.getPref( Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
+            val weightUnit = pref.getPref(Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
 
             if (lastWeight != 0f && lastFoot != 0 && lastInch.toInt() != 0) {
 
@@ -203,8 +203,8 @@ class CompletedActivity : BaseActivity(), CallbackListener {
     /* Todo set weight values */
     private fun setWeightValues() {
 
-        val lastWeight = pref.getPref( Constant.PREF_LAST_INPUT_WEIGHT, 0f)
-        val weightUnit = pref.getPref( Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
+        val lastWeight = pref.getPref(Constant.PREF_LAST_INPUT_WEIGHT, 0f)
+        val weightUnit = pref.getPref(Constant.PREF_WEIGHT_UNIT, Constant.DEF_KG)
 
         try {
             if (weightUnit == Constant.DEF_KG && lastWeight != 0f) {
@@ -330,7 +330,7 @@ class CompletedActivity : BaseActivity(), CallbackListener {
                         pref.kgToLb(lastWeight.toDouble()).toString()
                     )
                 )
-                pref.setPref( Constant.PREF_WEIGHT_UNIT, Constant.DEF_LB)
+                pref.setPref(Constant.PREF_WEIGHT_UNIT, Constant.DEF_LB)
             }
 
         }
@@ -378,9 +378,9 @@ class CompletedActivity : BaseActivity(), CallbackListener {
                 totalDuration.toString(),
                 pref.getCalorieFromSec(totalDuration).toString(),
                 exercisesList!!.size.toString(),
-                pref.getPref( Constant.PREF_LAST_INPUT_WEIGHT, 0f).toString(),
-                pref.getPref( Constant.PREF_LAST_INPUT_FOOT, 0).toString(),
-                pref.getPref( Constant.PREF_LAST_INPUT_INCH, 0F).toString(),
+                pref.getPref(Constant.PREF_LAST_INPUT_WEIGHT, 0f).toString(),
+                pref.getPref(Constant.PREF_LAST_INPUT_FOOT, 0).toString(),
+                pref.getPref(Constant.PREF_LAST_INPUT_INCH, 0F).toString(),
                 feelRate,
                 dbHelper.getPlanDayNameByDayId(exercisesList!![0].dayId!!),
                 exercisesList!![0].dayId!!
@@ -389,9 +389,6 @@ class CompletedActivity : BaseActivity(), CallbackListener {
             if (workoutPlanData!!.planDays!!.equals(Constant.PlanDaysYes))
                 dbHelper.updatePlanDayCompleteByDayId(exercisesList!![0].dayId!!)
 
-//            LocalDB.setLastCompletedDay(this, pWorkoutList[0].planId.toInt(), dbHelper.getPlanDayNameByDayId(pWorkoutList[0].dayId).toInt())
-//
-//            LocalDB.setLastUnCompletedExPos(this, pWorkoutList[0].planId.toInt(), pWorkoutList[0].dayId, 0)
         } catch (e: Exception) {
             e.printStackTrace()
         }
