@@ -73,6 +73,7 @@
                         android:layout_marginTop="@dimen/_50sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:background="@drawable/btn_bg_round_gradiant"
+            android:textColor="@color/text_inverse"
 
                         android:text="@string/quit" />
 

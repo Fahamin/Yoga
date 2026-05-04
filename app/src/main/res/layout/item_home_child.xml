@@ -20,6 +20,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/cover_morning" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/scrim_bottom_top"
+                app:layout_constraintBottom_toBottomOf="@id/imgCover"
+                app:layout_constraintEnd_toEndOf="@id/imgCover"
+                app:layout_constraintStart_toStartOf="@id/imgCover"
+                app:layout_constraintTop_toTopOf="@id/imgCover" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,6 +54,7 @@
                     android:fontFamily="@font/poppins"
                     android:id="@+id/tvTitle"
                     style="@style/txt_fff_18"
+                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_15sdp"
@@ -55,6 +65,7 @@
                     android:fontFamily="@font/poppins"
                     android:id="@+id/tvDes"
                     style="@style/txt_fff_13"
+                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -80,6 +91,7 @@
                     android:fontFamily="@font/poppins"
                         android:id="@+id/tvWorkoutTime"
                         style="@style/txt_fff_13"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_3sdp"
@@ -95,6 +107,7 @@
                     android:fontFamily="@font/poppins"
                         android:id="@+id/tvTotalWorkout"
                         style="@style/txt_fff_13"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_3sdp"
@@ -120,6 +133,7 @@
                     android:fontFamily="@font/poppins"
                             android:id="@+id/tvDayLeft"
                             style="@style/txt_fff_14"
+                            android:textColor="@color/white"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -129,6 +143,7 @@
                     android:fontFamily="@font/poppins"
                             android:id="@+id/tvPer"
                             style="@style/txt_fff_14"
+                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0%" />

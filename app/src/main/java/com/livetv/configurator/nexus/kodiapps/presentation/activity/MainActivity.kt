@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.menu_my_training -> binding.vPager.currentItem = 0
                 R.id.menu_discover -> binding.vPager.currentItem = 1
-                R.id.menu_setting -> binding.vPager.currentItem = 3
+                R.id.menu_setting -> binding.vPager.currentItem = 2
             }
             true
         }

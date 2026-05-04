@@ -1,23 +1,24 @@
 [versions]
-agp = "8.12.0-alpha02"
-audienceNetworkSdk = "6.20.0"
+agp = "9.2.0"
+audienceNetworkSdk = "6.21.0"
 coreUtils = "1.9.0"
-gson = "2.13.1"
-jodaTime = "2.14.0"
-kotlin = "2.2.0"
-coreKtx = "1.16.0"
+glide = "5.0.7"
+gson = "2.14.0"
+jodaTime = "2.14.2"
+kotlin = "2.3.21"
+coreKtx = "1.18.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
 appcompat = "1.7.1"
-material = "1.12.0"
-activity = "1.10.1"
+material = "1.13.0"
+activity = "1.13.0"
 constraintlayout = "2.2.1"
-navigationUi = "2.9.1"
-playServicesAds = "24.4.0"
-googleGmsGoogleServices = "4.4.3"
-firebaseDatabase = "21.0.0"
-firebaseAnalytics = "22.5.0"
+navigationUi = "2.9.8"
+playServicesAds = "25.2.0"
+googleGmsGoogleServices = "4.4.4"
+firebaseDatabase = "22.0.1"
+firebaseAnalytics = "23.2.0"
 
 [libraries]
 androidx-core = { module = "androidx.core:core", version.ref = "coreKtx" }
@@ -26,6 +27,7 @@ androidx-core-utils = { module = "androidx.core:core-utils", version.ref = "core
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationUi" }
 androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationUi" }
 audience-network-sdk = { module = "com.facebook.android:audience-network-sdk", version.ref = "audienceNetworkSdk" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 joda-time = { module = "joda-time:joda-time", version.ref = "jodaTime" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

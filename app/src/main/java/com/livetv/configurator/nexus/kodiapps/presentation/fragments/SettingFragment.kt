@@ -16,6 +16,7 @@ import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.MyApplication
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
+import com.livetv.configurator.nexus.kodiapps.core.ThemeHelper
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.CallbackListener
 import com.livetv.configurator.nexus.kodiapps.core.interfaces.DialogDismissListener
 import com.livetv.configurator.nexus.kodiapps.databinding.DialogSelectTtsEngineBinding
@@ -73,6 +74,9 @@ class SettingFragment : BaseFragment(), CallbackListener {
 
         binding.SwitchKeepTheScreenOn.isChecked =  pref!!.getPref(
             Constant.PREF_IS_KEEP_SCREEN_ON,false)
+        binding.tvThemeMode.text = getThemeModeLabel(
+            pref!!.getPref(Constant.PREF_THEME_MODE, Constant.THEME_SYSTEM)
+        )
 
 
     }
@@ -133,6 +137,10 @@ class SettingFragment : BaseFragment(), CallbackListener {
             startActivity(intent)
         }
 
+        fun onThemeModeClick() {
+            showThemeModeDialog()
+        }
+
 
         fun onRatUsClick(){
             pref!!.rateUs(mContext)
@@ -159,6 +167,41 @@ class SettingFragment : BaseFragment(), CallbackListener {
                     "Download the app:$link"
 
             pref!!.shareStringLink(mContext, strSubject, strText)
+        }
+    }
+
+    private fun showThemeModeDialog() {
+        val modes = arrayOf(
+            Constant.THEME_SYSTEM,
+            Constant.THEME_LIGHT,
+            Constant.THEME_DARK
+        )
+        val labels = arrayOf(
+            getString(R.string.theme_system),
+            getString(R.string.theme_light),
+            getString(R.string.theme_dark)
+        )
+        val currentMode = pref!!.getPref(Constant.PREF_THEME_MODE, Constant.THEME_SYSTEM)
+        val checkedItem = modes.indexOf(currentMode).coerceAtLeast(0)
+
+        AlertDialog.Builder(requireActivity(), R.style.MyAlertDialogStyle)
+            .setTitle(R.string.appearance)
+            .setSingleChoiceItems(labels, checkedItem) { dialog, which ->
+                val selectedMode = modes[which]
+                pref!!.setPref(Constant.PREF_THEME_MODE, selectedMode)
+                binding.tvThemeMode.text = labels[which]
+                ThemeHelper.applyTheme(selectedMode)
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.btn_cancel) { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+    private fun getThemeModeLabel(mode: String?): String {
+        return when (mode) {
+            Constant.THEME_LIGHT -> getString(R.string.theme_light)
+            Constant.THEME_DARK -> getString(R.string.theme_dark)
+            else -> getString(R.string.theme_system)
         }
     }
 

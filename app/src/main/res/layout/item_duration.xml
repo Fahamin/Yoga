@@ -6,10 +6,12 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:orientation="horizontal">
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bg_surface_card_8"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgDuration"
@@ -29,6 +31,7 @@
                     android:fontFamily="@font/poppins"
                 android:id="@+id/tvName"
                 style="@style/txt_fff_16"
+                android:textColor="@color/text_primary"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -38,7 +41,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/white" />
+                android:background="@color/divider_soft" />
 
         </LinearLayout>
 

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screen_background"
     tools:context=".presentation.activity.MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -22,10 +23,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="@color/bottom_nav_background"
             app:menu="@menu/bottom_nav_menu"
             app:itemRippleColor="?attr/colorPrimary"
-            app:itemTextColor="?attr/colorOnSurface"
-            app:itemIconTint="?attr/colorOnSurface"
+            app:itemTextColor="@color/bottom_nav_item_tint"
+            app:itemIconTint="@color/bottom_nav_item_tint"
             style="@style/Widget.Material3.BottomNavigationView" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

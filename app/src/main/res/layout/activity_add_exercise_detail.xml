@@ -173,6 +173,7 @@
             android:layout_marginEnd="@dimen/_15sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/btn_bg_round_gradiant"
+            android:textColor="@color/text_inverse"
             android:onClick="@{(v)->handler.onAddClick()}"
             android:layout_gravity="bottom"
             android:text="@string/add" />

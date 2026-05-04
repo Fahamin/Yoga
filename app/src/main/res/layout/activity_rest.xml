@@ -59,10 +59,10 @@
                     android:layout_width="@dimen/_90sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/btn_bg_round_gradiant"
-                    android:backgroundTint="@color/colorSettingbg"
+                    android:background="@drawable/btn_bg_round"
                     android:onClick="@{(v)->handler.onPlusTimeClick()}"
-                    android:text="@string/_20s" />
+                    android:text="@string/_20s"
+                    android:textColor="@color/text_primary" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSkip"
@@ -71,11 +71,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:background="@drawable/btn_bg_round_gradiant"
-
-                    android:backgroundTint="@color/setting_color_blue"
                     android:onClick="@{(v)->handler.onSkipClick()}"
                     android:text="@string/skip"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/text_inverse" />
 
             </LinearLayout>
 

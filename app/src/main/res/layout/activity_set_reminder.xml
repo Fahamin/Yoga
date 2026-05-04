@@ -148,6 +148,7 @@
                 android:backgroundTint="@color/box_select"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/btn_bg_round_gradiant"
+            android:textColor="@color/text_inverse"
 
                 android:text="@string/finished"
                 />

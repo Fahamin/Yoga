@@ -76,6 +76,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ThemeHelper.applySavedTheme(this)
 
         textToSpeech = TextToSpeech(this, TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR) {

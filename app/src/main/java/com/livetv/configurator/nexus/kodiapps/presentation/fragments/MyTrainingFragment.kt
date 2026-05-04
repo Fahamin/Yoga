@@ -97,6 +97,7 @@ class MyTrainingFragment : BaseFragment(), CallbackListener {
         })
 
         homePlansAdapter!!.addAll(dbHelper!!.getHomePlanList(Constant.PlanTypeWorkout))
+        binding.rvPlans.scheduleLayoutAnimation()
 
 
     }

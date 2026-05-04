@@ -63,6 +63,7 @@ internal object Constant {
     val PREF_WHATS_YOUR_GOAL ="pref_whats_your_goal"
     val PREF_IS_REMINDER_SET ="pref_is_reminder_set"
     val PREF_IS_KEEP_SCREEN_ON ="pref_is_keep_screen_on"
+    val PREF_THEME_MODE ="pref_theme_mode"
 
     const val PREF_WEIGHT_UNIT = "PREF_WEIGHT_UNIT"
     const val PREF_HEIGHT_UNIT = "PREF_HEIGHT_UNIT"
@@ -133,6 +134,10 @@ internal object Constant {
     const val Discover_Duration = "Duration"
 
     const val FROM_SETTING = "from setting"
+
+    const val THEME_SYSTEM = "system"
+    const val THEME_LIGHT = "light"
+    const val THEME_DARK = "dark"
 
     const val RESPONSE_FAILURE_CODE = 901
     const val RESPONSE_SUCCESS_CODE = 200

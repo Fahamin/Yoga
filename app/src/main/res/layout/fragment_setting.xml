@@ -17,6 +17,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screen_background"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,7 +39,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/primaryDark" />
+            android:background="@color/divider_soft" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -49,7 +50,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/primary"
+                android:background="@color/screen_background"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/dp70">
 
@@ -57,8 +58,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/colorSettingbg"
-                    app:cardCornerRadius="@dimen/dp20">
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,7 +98,7 @@
                             </LinearLayout>
 
                             <TextView
-                                style="@style/txt_fff_16"
+                                style="@style/txt_000_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -109,7 +110,7 @@
 
                             <TextView
                                 android:id="@+id/tvRestTime"
-                                style="@style/txt_fff_14"
+                                style="@style/txt_666_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableEnd="@drawable/ic_arrow_drop_down"
@@ -150,7 +151,7 @@
                             </LinearLayout>
 
                             <TextView
-                                style="@style/txt_fff_16"
+                                style="@style/txt_000_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -162,7 +163,7 @@
 
                             <TextView
                                 android:id="@+id/tvCountDownTime"
-                                style="@style/txt_fff_14"
+                                style="@style/txt_666_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableEnd="@drawable/ic_arrow_drop_down"
@@ -205,7 +206,7 @@
                             </LinearLayout>
 
                             <TextView
-                                style="@style/txt_fff_16"
+                                style="@style/txt_000_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -233,8 +234,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/colorSettingbg"
-                    app:cardCornerRadius="@dimen/dp20">
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -243,7 +244,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                            style="@style/txt_333_14"
+                            style="@style/txt_666_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
@@ -273,7 +274,7 @@
                             </LinearLayout>
 
                             <TextView
-                                style="@style/txt_fff_16"
+                                style="@style/txt_000_16"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -320,7 +321,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins"
@@ -377,7 +378,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins"
@@ -425,7 +426,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins"
@@ -473,7 +474,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins"
@@ -495,8 +496,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/colorSettingbg"
-                    app:cardCornerRadius="@dimen/dp20">
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -505,7 +506,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                            style="@style/txt_333_14"
+                            style="@style/txt_666_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
@@ -540,7 +541,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -600,7 +601,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -648,7 +649,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -690,7 +691,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins"
@@ -745,7 +746,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -773,8 +774,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/colorSettingbg"
-                    app:cardCornerRadius="@dimen/dp20">
+                    app:cardBackgroundColor="@color/surface_card"
+                    app:cardCornerRadius="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -783,7 +784,7 @@
                         android:padding="@dimen/_10sdp">
 
                         <TextView
-                            style="@style/txt_333_14"
+                            style="@style/txt_666_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
@@ -819,7 +820,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -830,6 +831,59 @@
                                     android:textStyle="bold" />
 
                             </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginStart="@dimen/dp50"
+                            android:layout_marginTop="@dimen/_7sdp"
+                            android:background="@color/view_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:onClick="@{(v)->handler.onThemeModeClick()}">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_img"
+                                android:backgroundTint="@color/setting_color_green">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:src="@drawable/ic_tune"
+                                    android:tint="@color/white" />
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/txt_000_16"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingStart="@dimen/_15sdp"
+                                android:paddingEnd="@dimen/_15sdp"
+                                android:text="@string/theme_mode"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvThemeMode"
+                                style="@style/txt_666_14"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                                android:drawableTint="@color/text_secondary"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_10sdp"
+                                tools:text="@string/theme_system" />
 
                         </LinearLayout>
 
@@ -867,7 +921,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -915,7 +969,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    style="@style/txt_fff_16"
+                                    style="@style/txt_000_16"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"

@@ -183,6 +183,7 @@
                             android:drawableStart="@drawable/ic_share"
                             android:drawablePadding="@dimen/_15sdp"
                             android:text="@string/share"
+                            android:textColor="@color/text_inverse"
                             tools:targetApi="m" />
 
                     </LinearLayout>
@@ -818,6 +819,7 @@
                         android:layout_marginEnd="@dimen/_25sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:background="@drawable/btn_bg_round_gradiant"
+            android:textColor="@color/text_inverse"
                         android:onClick="@{(v)->handler.onNextClick()}"
                         android:text="SAVE" />
 

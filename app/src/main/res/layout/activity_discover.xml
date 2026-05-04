@@ -17,6 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/screen_background"
         android:orientation="vertical">
 
         <FrameLayout
@@ -37,7 +38,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/primaryDark" />
+            android:background="@color/divider_soft" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -48,7 +49,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/primary"
+                android:background="@color/screen_background"
                 android:orientation="vertical"
                 android:paddingTop="@dimen/_15sdp"
                 android:paddingBottom="@dimen/dp70">
@@ -78,6 +79,11 @@
                             android:scaleType="centerCrop"
                             android:src="@drawable/cover_morning" />
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_130sdp"
+                            android:background="@drawable/scrim_bottom_top" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -91,6 +97,7 @@
                     android:fontFamily="@font/poppins"
                                 android:id="@+id/tvTitle"
                                 style="@style/txt_fff_20"
+                                android:textColor="@color/white"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/_2_min_lower_back_stretching" />
@@ -99,6 +106,7 @@
                     android:fontFamily="@font/poppins"
                                 android:id="@+id/tvDesc"
                                 style="@style/txt_fff_16"
+                                android:textColor="@color/white"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
@@ -143,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:layoutAnimation="@anim/item_layout_animation"
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/_5sdp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -178,6 +187,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:layoutAnimation="@anim/item_layout_animation"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_training_goal" />
@@ -274,6 +284,7 @@
                     android:id="@+id/rvPostureCorrection"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/item_layout_animation"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_training_goal" />
@@ -307,6 +318,7 @@
                     android:id="@+id/rvDuration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/item_layout_animation"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_duration" />

@@ -283,6 +283,7 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
             getFatBurningData()
             getBodyFocusData()
             getDurationData()
+            runRecyclerAnimations()
 
             val lastDate = pref!!.getPref(Constant.PREF_RANDOM_DISCOVER_PLAN_DATE, "")
             val currDate = pref!!.parseTime(Date(), "dd-MM-yyyy")
@@ -316,6 +317,13 @@ class DiscoverActivity : BaseActivity(), CallbackListener {
         bodyFocusAdapter!!.addAll(
             dbHelper.getDiscoverPlanList(Constant.Discover_BodyFocus) as ArrayList<HomePlanTableClass>
         )
+    }
+
+    private fun runRecyclerAnimations() {
+        binding!!.rvTrainingGoal.scheduleLayoutAnimation()
+        binding!!.rvBodyFocus.scheduleLayoutAnimation()
+        binding!!.rvPostureCorrection.scheduleLayoutAnimation()
+        binding!!.rvDuration.scheduleLayoutAnimation()
     }
 
     private fun getDurationData() {

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.livetv.configurator.nexus.kodiapps"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.livetv.configurator.nexus.kodiapps"
@@ -21,6 +21,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -31,8 +32,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
     buildFeatures {
         viewBinding = true
@@ -65,7 +69,7 @@ dependencies {
     implementation(libs.play.services.ads)
     implementation(libs.audience.network.sdk)
     implementation(libs.joda.time)
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.glide)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.core)

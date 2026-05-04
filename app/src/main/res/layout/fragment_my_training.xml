@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:background="@color/primaryDark"
+        android:background="@color/screen_background"
         android:orientation="vertical">
 
         <LinearLayout
@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@color/primary"
+                        android:background="@color/screen_background"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/_10sdp">
 
@@ -71,7 +71,8 @@
                             android:id="@+id/rvPlans"
                             tools:listitem="@layout/item_home_child"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layoutAnimation="@anim/item_layout_animation" />
 
                     </LinearLayout>
 
@@ -79,7 +80,7 @@
                         android:id="@+id/llMyTraining"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/primary"
+                        android:background="@color/screen_background"
                         android:orientation="vertical"
                         android:paddingBottom="@dimen/_10sdp">
 
