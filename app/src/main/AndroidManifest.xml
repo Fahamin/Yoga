@@ -111,18 +111,7 @@
         <activity
             android:name=".presentation.activity.SetReminderActivity"
             android:exported="false" />
-        <activity
-            android:name=".presentation.activity.WhatsYourGoalActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.activity.SplashScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".presentation.activity.ExercisesListActivity"
             android:exported="false" />
@@ -131,7 +120,15 @@
             android:exported="false" />
         <activity
             android:name=".presentation.activity.MainActivity"
-            android:exported="true" />
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

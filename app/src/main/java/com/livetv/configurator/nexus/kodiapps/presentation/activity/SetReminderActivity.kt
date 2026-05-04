@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.livetv.configurator.nexus.kodiapps.presentation.activity.MainActivity
 import com.livetv.configurator.nexus.kodiapps.R
-import com.livetv.configurator.nexus.kodiapps.adapter.WhatsYourGoalAdapter
 import com.livetv.configurator.nexus.kodiapps.core.Constant
 import com.livetv.configurator.nexus.kodiapps.core.Fun
 import com.livetv.configurator.nexus.kodiapps.core.Prefs
@@ -21,7 +20,6 @@ import com.livetv.configurator.nexus.kodiapps.model.ReminderTableClass
 class SetReminderActivity : AppCompatActivity() {
 
     var binding: ActivitySetReminderBinding? = null
-    var whatsYourGoalAdapter: WhatsYourGoalAdapter? = null
     lateinit var utils: Prefs
 
 

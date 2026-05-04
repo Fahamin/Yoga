@@ -98,12 +98,6 @@ open class BaseActivity() : AppCompatActivity(){
     }
 
 
-    /* fun initBack() {
-         imgBack_!!.visibility = View.VISIBLE
-         imgBack_!!.setOnClickListener {
-             finishActivity()
-         }
-     }*/
 
 
     internal lateinit var toast: Toast
@@ -185,31 +179,6 @@ open class BaseActivity() : AppCompatActivity(){
 
 
 
-    fun checkPermissions(activity: AppCompatActivity) {
-        val list = listOf(
-            Manifest.permission.INTERNET,
-            Manifest.permission.ACCESS_NETWORK_STATE
-        )
-
-        PermissionHelper.checkPermissions(
-            activity,
-            list,
-            object : ManagePermissionsImp.IPermission {
-                override fun onPermissionDenied() {
-//                        showAlert()
-                    if (activity is SplashScreenActivity) {
-                        activity.startapp(1000)
-                    }
-                }
-
-                override fun onPermissionGranted() {
-                    if (activity is SplashScreenActivity) {
-                        activity.startapp(1000)
-                        Log.e("TAG", "onPermissionGranted:::: ")
-                    }
-                }
-            })
-    }
 
     var dialogPermission: AlertDialog? = null
     private fun showAlert() {
