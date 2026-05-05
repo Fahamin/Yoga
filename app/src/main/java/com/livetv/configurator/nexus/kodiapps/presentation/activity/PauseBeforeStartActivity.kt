@@ -31,7 +31,9 @@ class PauseBeforeStartActivity : BaseActivity(), CallbackListener {
         pref = Prefs(this)
          Fun(this)
         val adContainerView = findViewById<FrameLayout>(R.id.ad_view_container)
-        Fun.showBanner(this, adContainerView)
+        if (adContainerView != null) {
+            Fun.showBanner(this, adContainerView)
+        }
         initIntentParam()
         init()
     }
@@ -61,6 +63,9 @@ class PauseBeforeStartActivity : BaseActivity(), CallbackListener {
     }
 
     private fun init() {
+        if (binding == null) {
+            return
+        }
         binding!!.handler = ClickHandler()
 
         binding!!.tvName.text = nextExercise!!.exName
